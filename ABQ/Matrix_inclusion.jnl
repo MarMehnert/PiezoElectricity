@@ -1,0 +1,995 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(5.0, 5.0))
+mdb.models['Model-1'].sketches['__profile__'].undo()
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 10.0), 
+    point2=(10.0, 0.0))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseSolidExtrude(depth=1.0, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=0.7, name='__profile__', 
+    sheetSize=28.28, transform=
+    mdb.models['Model-1'].parts['Part-1'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['Part-1'].faces[5], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['Part-1'].edges[9], 
+    sketchOrientation=RIGHT, origin=(5.0, 5.0, 0.0)))
+mdb.models['Model-1'].parts['Part-1'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 0.0), point1=(0.0, 2.8))
+mdb.models['Model-1'].sketches['__profile__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[6], radius=3.0, 
+    textPoint=(1.62353706359863, -3.21356511116028))
+mdb.models['Model-1'].parts['Part-1'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(('[#20 ]', 
+    ), ), sketch=mdb.models['Model-1'].sketches['__profile__'], sketchUpEdge=
+    mdb.models['Model-1'].parts['Part-1'].edges[9])
+del mdb.models['Model-1'].sketches['__profile__']
+del mdb.models['Model-1'].parts['Part-1'].features['Partition face-1']
+mdb.models['Model-1'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['Model-1'].parts['Part-1'].features['Solid extrude-1'].sketch)
+mdb.models['Model-1'].parts['Part-1'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['Model-1'].parts['Part-1'].features['Solid extrude-1'])
+mdb.models['Model-1'].sketches['__edit__'].ObliqueDimension(textPoint=(
+    4.43579292297363, 1.48038101196289), value=5.0, vertex1=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[1], vertex2=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[2])
+mdb.models['Model-1'].parts['Part-1'].features['Solid extrude-1'].setValues(
+    sketch=mdb.models['Model-1'].sketches['__edit__'])
+del mdb.models['Model-1'].sketches['__edit__']
+mdb.models['Model-1'].parts['Part-1'].regenerate()
+mdb.models['Model-1'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['Model-1'].parts['Part-1'].features['Solid extrude-1'].sketch)
+mdb.models['Model-1'].parts['Part-1'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['Model-1'].parts['Part-1'].features['Solid extrude-1'])
+del mdb.models['Model-1'].sketches['__edit__']
+mdb.models['Model-1'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['Model-1'].parts['Part-1'].features['Solid extrude-1'].sketch)
+mdb.models['Model-1'].parts['Part-1'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['Model-1'].parts['Part-1'].features['Solid extrude-1'])
+mdb.models['Model-1'].sketches['__edit__'].CircleByCenterPerimeter(center=(5.0, 
+    5.0), point1=(5.0, 7.5))
+mdb.models['Model-1'].sketches['__edit__'].CoincidentConstraint(addUndoState=
+    False, entity1=mdb.models['Model-1'].sketches['__edit__'].vertices[5], 
+    entity2=mdb.models['Model-1'].sketches['__edit__'].geometry[4])
+mdb.models['Model-1'].sketches['__edit__'].CoincidentConstraint(addUndoState=
+    False, entity1=mdb.models['Model-1'].sketches['__edit__'].vertices[4], 
+    entity2=mdb.models['Model-1'].sketches['__edit__'].geometry[4])
+mdb.models['Model-1'].sketches['__edit__'].EqualDistanceConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[2], entity2=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[3], midpoint=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[4])
+mdb.models['Model-1'].sketches['__edit__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[6], radius=3.0, 
+    textPoint=(7.42807483673096, 2.49094724655151))
+mdb.models['Model-1'].sketches['__edit__'].undo()
+mdb.models['Model-1'].sketches['__edit__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[6], radius=2.5, 
+    textPoint=(8.68545150756836, 2.03363227844238))
+mdb.models['Model-1'].sketches['__edit__'].autoTrimCurve(curve1=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[6], point1=(
+    6.8961067199707, 6.65622138977051))
+mdb.models['Model-1'].sketches['__edit__'].autoTrimCurve(curve1=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[4], point1=(
+    5.0584020614624, 6.11238765716553))
+mdb.models['Model-1'].parts['Part-1'].features['Solid extrude-1'].setValues(
+    sketch=mdb.models['Model-1'].sketches['__edit__'])
+del mdb.models['Model-1'].sketches['__edit__']
+mdb.models['Model-1'].parts['Part-1'].regenerate()
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 0.0), point1=(0.0, 5.0))
+mdb.models['Model-1'].sketches['__profile__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2], radius=2.5, 
+    textPoint=(11.3609199523926, -8.23990821838379))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 2.5), point2=(
+    0.0, -2.5))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].autoTrimCurve(curve1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2], point1=(
+    -2.30288696289062, -1.2556037902832))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Inclusion', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Inclusion'].BaseSolidExtrude(depth=20.0, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['Inclusion'].features['Solid extrude-1'].setValues(
+    depth=1.0)
+mdb.models['Model-1'].parts['Inclusion'].regenerate()
+mdb.models['Model-1'].parts['Inclusion'].regenerate()
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].Elastic(table=((3.0, 0.3), ))
+mdb.models['Model-1'].Material(name='Material-2')
+mdb.models['Model-1'].materials['Material-2'].Elastic(table=((4.0, 0.4), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Material-1', name=
+    'Inclusion', thickness=None)
+mdb.models['Model-1'].HomogeneousSolidSection(material='Material-2', name=
+    'Matrix', thickness=None)
+mdb.models['Model-1'].parts.changeKey(fromName='Part-1', toName='Matrix')
+mdb.models['Model-1'].parts['Matrix'].Set(cells=
+    mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), name='Set-1')
+mdb.models['Model-1'].parts['Matrix'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Matrix'].sets['Set-1'], sectionName='Matrix', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Inclusion'].Set(cells=
+    mdb.models['Model-1'].parts['Inclusion'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['Inclusion'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Inclusion'].sets['Set-1'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Inclusion-1', 
+    part=mdb.models['Model-1'].parts['Inclusion'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Matrix-1', 
+    part=mdb.models['Model-1'].parts['Matrix'])
+mdb.models['Model-1'].rootAssembly.translate(instanceList=('Inclusion-1', ), 
+    vector=(5.0, 5.0, 0.0))
+mdb.models['Model-1'].rootAssembly.rotate(angle=180.0, axisDirection=(0.0, 
+    10.0, 0.0), axisPoint=(5.0, 0.0, 1.0), instanceList=('Inclusion-1', ))
+mdb.models['Model-1'].rootAssembly.translate(instanceList=('Inclusion-1', ), 
+    vector=(0.0, 0.0, -1.0))
+mdb.models['Model-1'].parts['Inclusion'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.56)
+mdb.models['Model-1'].parts['Inclusion'].generateMesh()
+mdb.models['Model-1'].parts['Inclusion'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Inclusion'].cells.getSequenceFromMask((
+    '[#1 ]', ), ))
+mdb.models['Model-1'].parts['Inclusion'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['Inclusion'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].parts['Inclusion'].generateMesh()
+mdb.models['Model-1'].parts['Matrix'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=1.0)
+mdb.models['Model-1'].parts['Matrix'].generateMesh()
+mdb.models['Model-1'].parts['Matrix'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ))
+mdb.models['Model-1'].parts['Matrix'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask((
+    '[#1 ]', ), ))
+mdb.models['Model-1'].parts['Matrix'].generateMesh()
+mdb.models['Model-1'].parts['Matrix'].deleteMesh()
+mdb.models['Model-1'].parts['Matrix'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.8)
+mdb.models['Model-1'].parts['Matrix'].generateMesh()
+mdb.models['Model-1'].parts['Matrix'].deleteMesh()
+mdb.models['Model-1'].parts['Matrix'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.5)
+mdb.models['Model-1'].parts['Matrix'].generateMesh()
+mdb.models['Model-1'].parts['Inclusion'].deleteMesh()
+mdb.models['Model-1'].parts['Inclusion'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.5)
+mdb.models['Model-1'].parts['Inclusion'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    keepOnlyOrphanElems=True, nodeMergingTolerance=1e-06)
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    keepOnlyOrphanElems=True, nodeMergingTolerance=1e-06)
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=BOTH, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), mergeNodes=
+    BOUNDARY_ONLY, name='Matrix_Inclusion', nodeMergingTolerance=1e-06, 
+    originalInstances=SUPPRESS)
+mdb.Job(activateLoadBalancing=False, atTime=None, contactPrint=OFF, 
+    description='', echoPrint=OFF, explicitPrecision=SINGLE, 
+    getMemoryFromAnalysis=True, historyPrint=OFF, memory=90, memoryUnits=
+    PERCENTAGE, model='Model-1', modelPrint=OFF, multiprocessingMode=DEFAULT, 
+    name='Matrix_inclusion', nodalOutputPrecision=SINGLE, numCpus=1, 
+    numDomains=1, parallelizationMethodExplicit=DOMAIN, queue=None, scratch='', 
+    type=ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+del mdb.models['Model-1'].parts['Matrix_Inclusion']
+mdb.models['Model-1'].rootAssembly.regenerate()
+#* FeatureError: Regeneration failed
+del mdb.models['Model-1'].rootAssembly.features['Matrix_Inclusion-1']
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Inclusion-1', 'Matrix-1'))
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    nodeMergingTolerance=1.0)
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=MESH, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), mergeNodes=
+    BOUNDARY_ONLY, name='Part-1', nodeMergingTolerance=1.0, originalInstances=
+    SUPPRESS)
+del mdb.models['Model-1'].rootAssembly.features['Part-1-1']
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Inclusion-1', 'Matrix-1'))
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    nodeMergingTolerance=0.01)
+mdb.models['Model-1'].parts['Inclusion'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Inclusion'].cells.getSequenceFromMask((
+    '[#1 ]', ), ))
+mdb.models['Model-1'].parts['Inclusion'].seedEdgeByNumber(constraint=FINER, 
+    edges=mdb.models['Model-1'].parts['Inclusion'].edges.getSequenceFromMask((
+    '[#10 ]', ), ), number=20)
+mdb.models['Model-1'].parts['Inclusion'].generateMesh()
+mdb.models['Model-1'].parts['Matrix'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ))
+mdb.models['Model-1'].parts['Matrix'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Matrix'].edges.getSequenceFromMask(('[#10 ]', 
+    ), ), number=20)
+mdb.models['Model-1'].parts['Matrix'].generateMesh()
+mdb.models['Model-1'].parts['Inclusion'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Inclusion'].cells.getSequenceFromMask((
+    '[#1 ]', ), ))
+mdb.models['Model-1'].parts['Inclusion'].PartitionCellByPlaneThreePoints(cells=
+    mdb.models['Model-1'].parts['Inclusion'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), point1=
+    mdb.models['Model-1'].parts['Inclusion'].InterestingPoint(
+    mdb.models['Model-1'].parts['Inclusion'].edges[4], MIDDLE), point2=
+    mdb.models['Model-1'].parts['Inclusion'].InterestingPoint(
+    mdb.models['Model-1'].parts['Inclusion'].edges[4], CENTER), point3=
+    mdb.models['Model-1'].parts['Inclusion'].InterestingPoint(
+    mdb.models['Model-1'].parts['Inclusion'].edges[2], MIDDLE))
+mdb.models['Model-1'].parts['Inclusion'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['Inclusion'].cells.getSequenceFromMask(
+    ('[#3 ]', ), ), technique=SWEEP)
+mdb.models['Model-1'].parts['Inclusion'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+del mdb.models['Model-1'].parts['Part-1']
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    nodeMergingTolerance=1e-06)
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=MESH, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), mergeNodes=
+    BOUNDARY_ONLY, name='Matrix_Inclusion', nodeMergingTolerance=1e-06, 
+    originalInstances=SUPPRESS)
+mdb.models['Model-1'].parts['Matrix'].Set(cells=
+    mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), name='Set-4')
+mdb.models['Model-1'].parts['Matrix'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Matrix'].sets['Set-4'], sectionName='Matrix', 
+    thicknessAssignment=FROM_SECTION)
+del mdb.models['Model-1'].parts['Matrix'].sectionAssignments[1]
+mdb.models['Model-1'].parts['Matrix_Inclusion'].Set(elements=
+    mdb.models['Model-1'].parts['Matrix_Inclusion'].elements.getSequenceFromMask(
+    mask=('[#ffffffff:4 #fff ]', ), ), name='Set-2')
+mdb.models['Model-1'].parts['Matrix_Inclusion'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Matrix_Inclusion'].sets['Set-2'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+del mdb.models['Model-1'].parts['Matrix_Inclusion'].sectionAssignments[0]
+mdb.models['Model-1'].parts['Matrix_Inclusion'].Set(elements=
+    mdb.models['Model-1'].parts['Matrix_Inclusion'].elements.getSequenceFromMask(
+    mask=('[#0:4 #fffff000 #ffffffff:10 #f ]', ), ), name='Set-3')
+mdb.models['Model-1'].parts['Matrix_Inclusion'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Matrix_Inclusion'].sets['Set-3'], sectionName=
+    'Matrix', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+del mdb.models['Model-1'].parts['Matrix_Inclusion']
+mdb.models['Model-1'].rootAssembly.regenerate()
+#* FeatureError: Regeneration failed
+del mdb.models['Model-1'].rootAssembly.features['Matrix_Inclusion-1']
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Inclusion-1', 'Matrix-1'))
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    keepOnlyOrphanElems=True, nodeMergingTolerance=1e-06)
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=BOTH, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), mergeNodes=
+    BOUNDARY_ONLY, name='Part-1', nodeMergingTolerance=1e-06, 
+    originalInstances=SUPPRESS)
+del mdb.models['Model-1'].rootAssembly.features['Part-1-1']
+del mdb.models['Model-1'].parts['Part-1']
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Inclusion-1', 'Matrix-1'))
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    nodeMergingTolerance=1e-06)
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=MESH, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), mergeNodes=
+    BOUNDARY_ONLY, name='Part-1', nodeMergingTolerance=1e-06, 
+    originalInstances=SUPPRESS)
+del mdb.models['Model-1'].parts['Part-1'].sectionAssignments[0]
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:4 #fff ]', ), ), name='Set-3')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-3'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#0:4 #fffff000 #ffffffff:10 #f ]', ), ), name='Set-5')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-5'], sectionName='Matrix', 
+    thicknessAssignment=FROM_SECTION)
+del mdb.models['Model-1'].parts['Part-1'].sets['Set-5']
+del mdb.models['Model-1'].parts['Part-1'].sectionAssignments[1]
+del mdb.models['Model-1'].parts['Part-1'].sectionAssignments[0]
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:4 #fff ]', ), ), name='Set-5')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-5'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].deleteSets(setNames=('Set-1', 'Set-3', 
+    'Set-4', 'Set-5'))
+del mdb.models['Model-1'].parts['Part-1'].sectionAssignments[0]
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    elements=mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(
+    mask=('[#ffffffff:4 #fff ]', ), )), sectionName='Inclusion', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    elements=mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(
+    mask=('[#0:4 #fffff000 #ffffffff:10 #f ]', ), )), sectionName='Matrix', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(name='Inclusion', nodes=
+    mdb.models['Model-1'].parts['Part-1'].nodes.getSequenceFromMask(mask=(
+    '[#0:9 #1fe0402 #ffc0ff00 #20ffc000 #40 #7c00f800 #fffffff0', 
+    ' #f801ffff #0 #3e007c00 #fffc3ffc #fffc1fff #1f003f ]', ), ))
+del mdb.models['Model-1'].parts['Part-1'].sets['Inclusion']
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:4 #fff ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#0:8 #ffffffc0 #ffffff #0:3 #fffe0000 #ffffffff #f ]', ), ), name=
+    'Set-2')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].deleteSets(setNames=('Set-1', 'Set-2'))
+del mdb.models['Model-1'].parts['Part-1'].sectionAssignments[1]
+del mdb.models['Model-1'].parts['Part-1'].sectionAssignments[0]
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff #fffffff #fffffffe #ffffc7ff #7ff ]', ), ), name='Inclusion')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Inclusion'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+del mdb.models['Model-1'].parts['Part-1'].sectionAssignments[0]
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:4 #fff ]', ), ), name='Inclusion')
+del mdb.models['Model-1'].parts['Part-1'].sets['Inclusion']
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:4 #fff ]', ), ), name='Inclusion')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Inclusion'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#0:4 #fffff000 #ffffffff:10 #f ]', ), ), name='Matrix')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Matrix'], sectionName='Matrix', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:4 #fff ]', ), ), name='Inclusion')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#1ce739c #e739ce0 #7ffff800 #ffffc000 #3 ]', ), ), name='Set-3')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:4 #fff ]', ), ), name='Set-3')
+# Save by iwtm80 on 2018_01_23-13.21.25; build 6.13-3 2013_10_09-13.29.32 126623
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].deleteSets(setNames=('Set-3', 
+    'Inclusion', 'Matrix'))
+del mdb.models['Model-1'].parts['Part-1'].sectionAssignments[1]
+del mdb.models['Model-1'].parts['Part-1'].sectionAssignments[0]
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#f7b9c #7bdce0 #3def000 #1ef78000 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-1'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#fffff #7ffff8 #7bdef000 #def7808f #47b ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#1efffff #f7ffff8 #fffff840 #ffffc3ff #fff ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:4 #fff ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#fce739c #7e739ce0 #3ffff00 #1ffff800 ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#9fefffff #ff7ffffb #ffffffdc #ffffffff #fff ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#dfffffff #ffffffff #fffffffe #ffffffff #fff ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:2 #fffffffe #ffffffff #fff ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:4 #fff ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:2 #fffffffe #ffffffff #fff ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Matrix'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ))
+mdb.models['Model-1'].parts['Matrix'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Matrix'].edges.getSequenceFromMask((
+    '[#4000 ]', ), ), number=1)
+mdb.models['Model-1'].parts['Matrix'].generateMesh()
+mdb.models['Model-1'].parts['Inclusion'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Inclusion'].cells.getSequenceFromMask((
+    '[#3 ]', ), ))
+mdb.models['Model-1'].parts['Inclusion'].seedEdgeByNumber(constraint=FINER, 
+    edges=mdb.models['Model-1'].parts['Inclusion'].edges.getSequenceFromMask((
+    '[#800 ]', ), ), number=1)
+mdb.models['Model-1'].parts['Inclusion'].generateMesh()
+del mdb.models['Model-1'].rootAssembly.features['Part-1-1']
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Inclusion-1', 'Matrix-1'))
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    nodeMergingTolerance=1e-06)
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=MESH, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), mergeNodes=
+    BOUNDARY_ONLY, name='Part-2', nodeMergingTolerance=1e-06, 
+    originalInstances=SUPPRESS)
+mdb.models['Model-1'].parts['Part-2'].sectionAssignments[0].setValues(offset=
+    0.0, offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-2'].sets['Set-4'], sectionName='Matrix')
+mdb.models['Model-1'].parts['Part-2'].Set(elements=
+    mdb.models['Model-1'].parts['Part-2'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:2 #3f ]', ), ), name='Set-3')
+mdb.models['Model-1'].parts['Part-2'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-2'].sets['Set-3'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-2'].Set(elements=
+    mdb.models['Model-1'].parts['Part-2'].elements.getSequenceFromMask(mask=(
+    '[#3084210 #3ffc0 ]', ), ), name='Set-3')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-2'].Set(elements=
+    mdb.models['Model-1'].parts['Part-2'].elements.getSequenceFromMask(mask=(
+    '[#ffffffff:2 #3d ]', ), ), name='Set-3')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-2'].Set(elements=
+    mdb.models['Model-1'].parts['Part-2'].elements.getSequenceFromMask(mask=(
+    '[#0:2 #2 ]', ), ), name='Set-5')
+mdb.models['Model-1'].parts['Part-2'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-2'].sets['Set-5'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.features['Part-2-1'].suppress()
+mdb.models['Model-1'].rootAssembly.features['Matrix-1'].resume()
+mdb.models['Model-1'].rootAssembly.features['Matrix-1'].suppress()
+mdb.models['Model-1'].rootAssembly.features['Part-2-1'].resume()
+del mdb.models['Model-1'].rootAssembly.features['Part-2-1']
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Matrix-1', 'Inclusion-1'))
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    keepOnlyOrphanElems=True, nodeMergingTolerance=1e-06)
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    keepOnlyOrphanElems=True, nodeMergingTolerance=1e-06)
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=BOTH, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), mergeNodes=
+    BOUNDARY_ONLY, name='Part-3', nodeMergingTolerance=1e-06, 
+    originalInstances=SUPPRESS)
+mdb.models['Model-1'].rootAssembly.deleteFeatures(('Part-3-1', 'Inclusion-1', 
+    'Matrix-1'))
+del mdb.models['Model-1'].parts['Part-1']
+del mdb.models['Model-1'].parts['Part-2']
+del mdb.models['Model-1'].parts['Part-3']
+mdb.models['Model-1'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['Model-1'].parts['Matrix'].features['Solid extrude-1'].sketch)
+mdb.models['Model-1'].parts['Matrix'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['Model-1'].parts['Matrix'].features['Solid extrude-1'])
+mdb.models['Model-1'].sketches['__edit__'].autoTrimCurve(curve1=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[7], point1=(
+    2.66454887390137, 4.17188882827759))
+mdb.models['Model-1'].sketches['__edit__'].Line(point1=(5.0, 7.5), point2=(5.0, 
+    2.5))
+mdb.models['Model-1'].sketches['__edit__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__edit__'].geometry[10])
+mdb.models['Model-1'].sketches['__edit__'].ParallelConstraint(addUndoState=
+    False, entity1=mdb.models['Model-1'].sketches['__edit__'].geometry[9], 
+    entity2=mdb.models['Model-1'].sketches['__edit__'].geometry[10])
+mdb.models['Model-1'].parts['Matrix'].features['Solid extrude-1'].setValues(
+    sketch=mdb.models['Model-1'].sketches['__edit__'])
+del mdb.models['Model-1'].sketches['__edit__']
+mdb.models['Model-1'].parts['Matrix'].regenerate()
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=0.7, name='__profile__', 
+    sheetSize=28.35, transform=
+    mdb.models['Model-1'].parts['Matrix'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['Matrix'].faces[4], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['Matrix'].edges[7], 
+    sketchOrientation=RIGHT, origin=(2.5, 5.0, 1.0)))
+mdb.models['Model-1'].parts['Matrix'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].ArcByCenterEnds(center=(2.5, 0.0)
+    , direction=COUNTERCLOCKWISE, point1=(2.5, 2.5), point2=(2.5, -2.5))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[6], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].EqualDistanceConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[3], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0], midpoint=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[6])
+mdb.models['Model-1'].sketches['__profile__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[8], radius=2.5, 
+    textPoint=(-0.287860870361328, -1.58912587165832))
+mdb.models['Model-1'].parts['Matrix'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['Matrix'].faces.getSequenceFromMask(('[#10 ]', 
+    ), ), sketch=mdb.models['Model-1'].sketches['__profile__'], sketchUpEdge=
+    mdb.models['Model-1'].parts['Matrix'].edges[7])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=0.56, name='__profile__', 
+    sheetSize=22.44, transform=
+    mdb.models['Model-1'].parts['Matrix'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['Matrix'].faces[6], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['Matrix'].edges[15], 
+    sketchOrientation=RIGHT, origin=(2.5, 5.0, 0.0)))
+mdb.models['Model-1'].parts['Matrix'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].ArcByCenterEnds(center=(-2.5, 
+    0.0), direction=CLOCKWISE, point1=(-2.5, 2.5), point2=(-2.5, -2.5))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[6], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[7])
+mdb.models['Model-1'].sketches['__profile__'].EqualDistanceConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[1], midpoint=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[6])
+mdb.models['Model-1'].parts['Matrix'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['Matrix'].faces.getSequenceFromMask(('[#40 ]', 
+    ), ), sketch=mdb.models['Model-1'].sketches['__profile__'], sketchUpEdge=
+    mdb.models['Model-1'].parts['Matrix'].edges[15])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['Matrix'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Matrix'].edges[5], point=
+    mdb.models['Model-1'].parts['Matrix'].InterestingPoint(
+    mdb.models['Model-1'].parts['Matrix'].edges[5], MIDDLE))
+mdb.models['Model-1'].parts['Matrix'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Matrix'].edges[20], point=
+    mdb.models['Model-1'].parts['Matrix'].vertices[14])
+mdb.models['Model-1'].parts['Matrix'].deleteFeatures(('Partition face-1', 
+    'Partition face-2', 'Partition cell-1', 'Partition cell-2'))
+mdb.models['Model-1'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['Model-1'].parts['Matrix'].features['Solid extrude-1'].sketch)
+mdb.models['Model-1'].parts['Matrix'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['Model-1'].parts['Matrix'].features['Solid extrude-1'])
+mdb.models['Model-1'].sketches['__edit__'].ArcByCenterEnds(center=(5.0, 5.0), 
+    direction=COUNTERCLOCKWISE, point1=(5.0, 7.5), point2=(5.0, 2.5))
+mdb.models['Model-1'].sketches['__edit__'].CoincidentConstraint(addUndoState=
+    False, entity1=mdb.models['Model-1'].sketches['__edit__'].vertices[9], 
+    entity2=mdb.models['Model-1'].sketches['__edit__'].geometry[10])
+mdb.models['Model-1'].sketches['__edit__'].EqualDistanceConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[6], entity2=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[7], midpoint=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[9])
+mdb.models['Model-1'].sketches['__edit__'].autoTrimCurve(curve1=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[10], point1=(
+    5.02213096618652, 4.53032493591309))
+mdb.models['Model-1'].parts['Matrix'].features['Solid extrude-1'].setValues(
+    sketch=mdb.models['Model-1'].sketches['__edit__'])
+del mdb.models['Model-1'].sketches['__edit__']
+mdb.models['Model-1'].parts['Matrix'].regenerate()
+mdb.models['Model-1'].parts['Matrix'].seedEdgeByNumber(constraint=FINER, edges=
+    mdb.models['Model-1'].parts['Matrix'].edges.getSequenceFromMask(('[#50 ]', 
+    ), ), number=16)
+mdb.models['Model-1'].parts['Matrix'].setSeedConstraints(constraint=FIXED, 
+    edges=mdb.models['Model-1'].parts['Matrix'].edges.getSequenceFromMask((
+    '[#10 ]', ), ))
+mdb.models['Model-1'].parts['Matrix'].generateMesh()
+mdb.models['Model-1'].parts['Inclusion'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Inclusion'].cells.getSequenceFromMask((
+    '[#2 ]', ), ))
+mdb.models['Model-1'].parts['Inclusion'].seedEdgeByNumber(constraint=FIXED, 
+    edges=mdb.models['Model-1'].parts['Inclusion'].edges.getSequenceFromMask((
+    '[#10 ]', ), ), number=8)
+mdb.models['Model-1'].parts['Inclusion'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Inclusion'].cells.getSequenceFromMask((
+    '[#1 ]', ), ))
+mdb.models['Model-1'].parts['Inclusion'].seedEdgeByNumber(constraint=FIXED, 
+    edges=mdb.models['Model-1'].parts['Inclusion'].edges.getSequenceFromMask((
+    '[#2000 ]', ), ), number=8)
+mdb.models['Model-1'].parts['Inclusion'].generateMesh()
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Inclusion-1', 
+    part=mdb.models['Model-1'].parts['Inclusion'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Matrix-1', 
+    part=mdb.models['Model-1'].parts['Matrix'])
+mdb.models['Model-1'].rootAssembly.translate(instanceList=('Inclusion-1', ), 
+    vector=(5.0, 5.0, 1.0))
+mdb.models['Model-1'].rootAssembly.rotate(angle=180.0, axisDirection=(0.0, 1.0, 
+    0.0), axisPoint=(5.0, 0.0, 1.0), instanceList=('Inclusion-1', ))
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    mergeBoundaryOnly=False, nodeMergingTolerance=0.01)
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    mergeBoundaryOnly=False, nodeMergingTolerance=0.1)
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=MESH, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), mergeNodes=ALL, 
+    name='Part-1', nodeMergingTolerance=0.1, originalInstances=SUPPRESS)
+del mdb.models['Model-1'].parts['Part-1'].sectionAssignments[0]
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#fff7ffff #ffff ]', ), ), name='Inclusion')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Inclusion'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#80000 ]', ), ), name='Inclusion2')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Inclusion2'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#0 #ffff0000 #ffffffff:4 #1ffffb ]', ), ), name='Matrix')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Matrix'], sectionName='Matrix', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#0:6 #4 ]', ), ), name='Matrix2')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Matrix2'], sectionName='Matrix'
+    , thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.rotate(angle=90.0, axisDirection=(10.0, 0.0, 
+    0.0), axisPoint=(0.0, 0.0, 0.0), instanceList=('Part-1-1', ))
+mdb.models['Model-1'].rootAssembly.translate(instanceList=('Part-1-1', ), 
+    vector=(0.0, 1.0, 0.0))
+# Save by iwtm80 on 2018_01_23-15.51.03; build 6.13-3 2013_10_09-13.29.32 126623
+# Save by iwtm80 on 2018_01_23-15.51.06; build 6.13-3 2013_10_09-13.29.32 126623
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['Model-1'].rootAssembly.features['Part-1-1']
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Matrix-1', 'Inclusion-1'))
+mdb.models['Model-1'].rootAssembly.rotate(angle=90.0, axisDirection=(10.0, 0.0, 
+    0.0), axisPoint=(0.0, 0.0, 0.0), instanceList=('Inclusion-1', 'Matrix-1'))
+mdb.models['Model-1'].rootAssembly.translate(instanceList=('Inclusion-1', 
+    'Matrix-1'), vector=(0.0, 1.0, 0.0))
+mdb.models['Model-1'].rootAssembly._previewMergeMeshes(instances=(
+    mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    mergeBoundaryOnly=False, nodeMergingTolerance=0.1)
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=MESH, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), mergeNodes=ALL, 
+    name='Part-2', nodeMergingTolerance=0.1, originalInstances=SUPPRESS)
+del mdb.models['Model-1'].parts['Part-2'].sectionAssignments[0]
+mdb.models['Model-1'].parts['Part-2'].Set(elements=
+    mdb.models['Model-1'].parts['Part-2'].elements.getSequenceFromMask(mask=(
+    '[#ff7fffff #ffff ]', ), ), name='Set-3')
+mdb.models['Model-1'].parts['Part-2'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-2'].sets['Set-3'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-2'].Set(elements=
+    mdb.models['Model-1'].parts['Part-2'].elements.getSequenceFromMask(mask=(
+    '[#800000 ]', ), ), name='Set-5')
+mdb.models['Model-1'].parts['Part-2'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-2'].sets['Set-5'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-2'].Set(elements=
+    mdb.models['Model-1'].parts['Part-2'].elements.getSequenceFromMask(mask=(
+    '[#0 #ffff0000 #feffffff #ffffffff:3 #1fffff ]', ), ), name='Set-6')
+mdb.models['Model-1'].parts['Part-2'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-2'].sets['Set-6'], sectionName='Matrix', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-2'].Set(elements=
+    mdb.models['Model-1'].parts['Part-2'].elements.getSequenceFromMask(mask=(
+    '[#0:2 #1000000 ]', ), ), name='Set-7')
+mdb.models['Model-1'].parts['Part-2'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-2'].sets['Set-7'], sectionName='Matrix', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+# Save by iwtm80 on 2018_01_24-07.58.13; build 6.13-3 2013_10_09-13.29.32 126623
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['Model-1'].rootAssembly.features['Part-2-1']
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Inclusion-1', 'Matrix-1'))
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=GEOMETRY, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    keepIntersections=ON, name='Part-3', originalInstances=SUPPRESS)
+mdb.models['Model-1'].parts['Part-3'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=1.0)
+mdb.models['Model-1'].parts['Part-3'].generateMesh()
+mdb.models['Model-1'].parts['Part-3'].deleteMesh()
+mdb.models['Model-1'].parts['Part-3'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.5)
+mdb.models['Model-1'].parts['Part-3'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['Part-3'].cells.getSequenceFromMask((
+    '[#7 ]', ), ), technique=SWEEP)
+mdb.models['Model-1'].parts['Part-3'].generateMesh()
+mdb.models['Model-1'].parts['Part-3'].Set(cells=
+    mdb.models['Model-1'].parts['Part-3'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), name='Set-5')
+mdb.models['Model-1'].parts['Part-3'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-3'].sets['Set-5'], sectionName='Matrix', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-3'].Set(cells=
+    mdb.models['Model-1'].parts['Part-3'].cells.getSequenceFromMask(('[#3 ]', 
+    ), ), name='Set-6')
+mdb.models['Model-1'].parts['Part-3'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-3'].sets['Set-6'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+del mdb.models['Model-1'].parts['Part-3'].sectionAssignments[0]
+mdb.models['Model-1'].rootAssembly.regenerate()
+del mdb.models['Model-1'].rootAssembly.features['Part-3-1']
+del mdb.models['Model-1'].parts['Part-1']
+del mdb.models['Model-1'].parts['Part-2']
+del mdb.models['Model-1'].parts['Part-3']
+del mdb.models['Model-1'].parts['Inclusion'].sets['Set-1']
+mdb.models['Model-1'].parts['Matrix'].deleteSets(setNames=('Set-1', 'Set-4'))
+mdb.models['Model-1'].parts['Matrix'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ))
+mdb.models['Model-1'].parts['Matrix'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Matrix'].edges[13], point=
+    mdb.models['Model-1'].parts['Matrix'].InterestingPoint(
+    mdb.models['Model-1'].parts['Matrix'].edges[13], MIDDLE))
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Inclusion-1', 'Matrix-1'))
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=GEOMETRY, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    keepIntersections=ON, name='Part-1', originalInstances=SUPPRESS)
+del mdb.models['Model-1'].rootAssembly.features['Part-1-1']
+del mdb.models['Model-1'].parts['Part-1']
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Inclusion-1', 'Matrix-1'))
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=GEOMETRY, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    keepIntersections=ON, name='Matrix_Inclusion', originalInstances=SUPPRESS)
+mdb.models['Model-1'].parts['Matrix_Inclusion'].setMeshControls(algorithm=
+    MEDIAL_AXIS, regions=
+    mdb.models['Model-1'].parts['Matrix_Inclusion'].cells.getSequenceFromMask((
+    '[#f ]', ), ), technique=SWEEP)
+mdb.models['Model-1'].parts['Matrix_Inclusion'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.5)
+mdb.models['Model-1'].parts['Matrix_Inclusion'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['Matrix_Inclusion'].edges.getSequenceFromMask((
+    '[#400000 ]', ), ), number=1)
+mdb.models['Model-1'].parts['Matrix_Inclusion'].generateMesh()
+mdb.models['Model-1'].parts['Matrix_Inclusion'].Set(cells=
+    mdb.models['Model-1'].parts['Matrix_Inclusion'].cells.getSequenceFromMask((
+    '[#3 ]', ), ), name='Inclusion')
+mdb.models['Model-1'].parts['Matrix_Inclusion'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Matrix_Inclusion'].sets['Inclusion'], 
+    sectionName='Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Matrix_Inclusion'].Set(cells=
+    mdb.models['Model-1'].parts['Matrix_Inclusion'].cells.getSequenceFromMask((
+    '[#c ]', ), ), name='Matrix')
+mdb.models['Model-1'].parts['Matrix_Inclusion'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Matrix_Inclusion'].sets['Matrix'], 
+    sectionName='Matrix', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.jobs.changeKey(fromName='Matrix_inclusion', toName='Matrix_inclusion1')
+# Save by iwtm80 on 2018_01_25-13.38.46; build 6.13-3 2013_10_09-13.29.32 126623
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['Model-1'].parts['Matrix'].features['Solid extrude-1'].sketch)
+mdb.models['Model-1'].parts['Matrix'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['Model-1'].parts['Matrix'].features['Solid extrude-1'])
+mdb.models['Model-1'].sketches['__edit__'].CircleByCenterPerimeter(center=(
+    1.25, 1.25), point1=(1.21372890472412, 1.92239356040955))
+mdb.models['Model-1'].sketches['__edit__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[12], radius=1.0, 
+    textPoint=(2.02376985549927, 2.37970876693726))
+mdb.models['Model-1'].sketches['__edit__'].undo()
+mdb.models['Model-1'].sketches['__edit__'].delete(objectList=(
+    mdb.models['Model-1'].sketches['__edit__'].geometry[12], ))
+mdb.models['Model-1'].sketches['__edit__'].CircleByCenterPerimeter(center=(
+    1.25, 1.25), point1=(1.25, 2.5))
+mdb.models['Model-1'].sketches['__edit__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[13], radius=0.5, 
+    textPoint=(2.07213068008423, 2.99770188331604))
+mdb.models['Model-1'].sketches['__edit__'].DistanceDimension(entity1=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[12], entity2=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[2], textPoint=(
+    0.379507064819336, 3.35613775253296), value=1.0)
+mdb.models['Model-1'].sketches['__edit__'].undo()
+mdb.models['Model-1'].sketches['__edit__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[2])
+mdb.models['Model-1'].sketches['__edit__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[3])
+mdb.models['Model-1'].sketches['__edit__'].DistanceDimension(entity1=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[12], entity2=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[2], textPoint=(
+    0.48831844329834, 3.07186079025269), value=1.0)
+mdb.models['Model-1'].sketches['__edit__'].DistanceDimension(entity1=
+    mdb.models['Model-1'].sketches['__edit__'].vertices[12], entity2=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[3], textPoint=(
+    -0.660247325897217, 0.72348690032959), value=1.0)
+mdb.models['Model-1'].parts['Matrix'].features['Solid extrude-1'].setValues(
+    sketch=mdb.models['Model-1'].sketches['__edit__'])
+del mdb.models['Model-1'].sketches['__edit__']
+mdb.models['Model-1'].parts['Matrix'].generateMesh()
+mdb.models['Model-1'].parts['Matrix'].regenerate()
+mdb.models['Model-1'].parts['Matrix'].generateMesh()
+mdb.models['Model-1'].parts['Matrix'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask(('[#3 ]', 
+    ), ))
+mdb.models['Model-1'].parts['Matrix'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['Matrix'].cells.getSequenceFromMask((
+    '[#3 ]', ), ), technique=SWEEP)
+mdb.models['Model-1'].parts['Matrix'].generateMesh()
+mdb.models['Model-1'].rootAssembly.features['Matrix_Inclusion-1'].suppress()
+mdb.models['Model-1'].rootAssembly.resumeFeatures(('Inclusion-1', 'Matrix-1'))
+mdb.models['Model-1'].rootAssembly.InstanceFromBooleanMerge(domain=GEOMETRY, 
+    instances=(mdb.models['Model-1'].rootAssembly.instances['Inclusion-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['Matrix-1']), 
+    keepIntersections=ON, name='Part-1', originalInstances=SUPPRESS)
+mdb.models['Model-1'].parts['Part-1'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask((
+    '[#f ]', ), ), technique=SWEEP)
+mdb.models['Model-1'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.5)
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+mdb.models['Model-1'].parts['Part-1'].Set(cells=
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#3 ]', 
+    ), ), name='Set-2')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-2'], sectionName=
+    'Inclusion', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-1'].Set(cells=
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#c ]', 
+    ), ), name='Set-3')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-3'], sectionName='Matrix', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.jobs.changeKey(fromName='Matrix_inclusion1', toName='Matrix_inclusion2')
+# Save by iwtm80 on 2018_01_26-09.30.48; build 6.13-3 2013_10_09-13.29.32 126623

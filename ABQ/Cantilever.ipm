@@ -1,0 +1,13 @@
+<?xml version="1.0"?><msgwrapper><Started><phase type="symconst">BATCHPRE_PHASE</phase><jobName type="string">Cantilever</jobName><clientHost type="string">fautm106</clientHost><handle type="integer">0</handle></Started>
+<Odb_File><file type="string">/calculate/iwtm80/DEAL_II/piezo_electricity/ABQ/Cantilever.odb</file><phase type="symconst">BATCHPRE_PHASE</phase><jobName type="string">Cantilever</jobName></Odb_File>
+<Completed><message type="string">Analysis phase complete</message><phase type="symconst">BATCHPRE_PHASE</phase><jobName type="string">Cantilever</jobName></Completed>
+<Started><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cantilever</jobName><clientHost type="string">fautm106</clientHost><handle type="integer">0</handle></Started>
+<Step><stepId type="integer">1</stepId><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cantilever</jobName></Step>
+<Odb_Frame><step type="integer">0</step><frame type="integer">0</frame><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cantilever</jobName></Odb_Frame>
+<Status><step type="integer">1</step><increment type="integer">0</increment><attempts type="integer">0</attempts><severe type="integer">0</severe><equilibrium type="integer">0</equilibrium><iterations type="integer">0</iterations><totalTime type="float">0</totalTime><stepTime type="float">0</stepTime><timeIncrement type="float">1</timeIncrement><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cantilever</jobName></Status>
+<MEMORY_ESTIMATE><memory type="float">83.3666152954102</memory><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cantilever</jobName></MEMORY_ESTIMATE>
+<Odb_Frame><step type="integer">0</step><frame type="integer">1</frame><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cantilever</jobName></Odb_Frame>
+<Status><step type="integer">1</step><increment type="integer">1</increment><attempts type="integer">1</attempts><severe type="integer">0</severe><equilibrium type="integer">5</equilibrium><iterations type="integer">5</iterations><totalTime type="float">1</totalTime><stepTime type="float">1</stepTime><timeIncrement type="float">1</timeIncrement><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cantilever</jobName></Status>
+<End_Step><stepId type="integer">1</stepId><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cantilever</jobName></End_Step>
+<Completed><message type="string">Analysis phase complete</message><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cantilever</jobName></Completed>
+<JOB_COMPLETED><jobName type="string">Cantilever</jobName><time type="string">Wed Feb 21 10:43:54 2018</time></JOB_COMPLETED></msgwrapper>
