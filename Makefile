@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /calculate/iwtm80/DEAL_II/piezo_electricity
+CMAKE_SOURCE_DIR = /calculate/iwtm80/GitHub/PiezoElectricity
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /calculate/iwtm80/DEAL_II/piezo_electricity
+CMAKE_BINARY_DIR = /calculate/iwtm80/GitHub/PiezoElectricity
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /calculate/iwtm80/DEAL_II/piezo_electricity/CMakeFiles /calculate/iwtm80/DEAL_II/piezo_electricity/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /calculate/iwtm80/DEAL_II/piezo_electricity/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

@@ -2,15 +2,15 @@ Abaqus JOB Cantilever
 Abaqus 6.13-3
 Abaqus License Manager checked out the following licenses:
 Abaqus/Standard checked out 5 tokens.
-<79 out of 100 licenses remain available>.
+<69 out of 100 licenses remain available>.
 Begin Analysis Input File Processor
-Wed Feb 21 10:43:47 2018
+Tue Mar  6 12:23:21 2018
 Run pre
-Wed Feb 21 10:43:49 2018
+Tue Mar  6 12:23:23 2018
 End Analysis Input File Processor
 Begin Abaqus/Standard Analysis
-Wed Feb 21 10:43:49 2018
+Tue Mar  6 12:23:23 2018
 Run standard
-Wed Feb 21 10:43:53 2018
+Tue Mar  6 12:23:24 2018
 End Abaqus/Standard Analysis
 Abaqus JOB Cantilever COMPLETED

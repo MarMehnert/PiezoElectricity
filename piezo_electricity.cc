@@ -174,9 +174,13 @@ struct Coefficients
 		static constexpr double epsilon_z = -1.040639889353618e-10; //electrical permittivity in z-Direction
 
 		// Coupling parameters
-		static constexpr double e_13 = 2.904e-5;  //piezoelectric coupling coefficient
-		static constexpr double e_33 = -5.158e-5;  //piezoelectric coupling coefficient
+		static constexpr double e_13 = 4.91e-5;  //piezoelectric coupling coefficient
+		static constexpr double e_33 = -3.15e-5;  //piezoelectric coupling coefficient
 		static constexpr double e_61 = 0; //piezoelectric coupling coefficient
+		/*
+		 * 		static constexpr double e_13 = 4.91-5;  //piezoelectric coupling coefficient
+		static constexpr double e_33 = -3.15e-5;  //piezoelectric coupling coefficient
+		 */
 	};
 
 
@@ -206,8 +210,8 @@ struct Coefficients
 		static constexpr double epsilon_z = -1.040639889353618e-10; //electrical permittivity in z-Direction
 
 		// Coupling parameters
-		static constexpr double e_13 = -2.904e-5;  //piezoelectric coupling coefficient
-		static constexpr double e_33 = -5.158e-5;  //piezoelectric coupling coefficient
+		static constexpr double e_13 = -4.91e-5;  //piezoelectric coupling coefficient
+		static constexpr double e_33 = -3.15e-5;  //piezoelectric coupling coefficient
 		static constexpr double e_61 = 0; //piezoelectric coupling coefficient
 	};
 };

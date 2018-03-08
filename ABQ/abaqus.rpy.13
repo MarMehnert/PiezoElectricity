@@ -1,0 +1,265 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/CAE Release 6.13-3 replay file
+# Internal Version: 2013_10_09-13.29.32 126623
+# Run by iwtm80 on Wed Mar  7 13:32:57 2018
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=276.013336181641, 
+    height=262.959991455078)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from caeModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+openMdb(
+    pathName='/calculate/iwtm80/GitHub/PiezoElectricity/ABQ/Cantilever.cae')
+#: The model database "/calculate/iwtm80/GitHub/PiezoElectricity/ABQ/Cantilever.cae" has been opened.
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].partDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+p = mdb.models['Model-1'].parts['Part-1']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#2 ]', ), )
+p.deleteMesh(regions=pickedRegions)
+p = mdb.models['Model-1'].parts['Part-1']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#100 ]', ), )
+p.seedEdgeByNumber(edges=pickedEdges, number=500, constraint=FINER)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+a = mdb.models['Model-1'].rootAssembly
+a.regenerate()
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
+mdb.jobs['Cantilever'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "Cantilever.inp".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+p = mdb.models['Model-1'].parts['Part-1']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#2 ]', ), )
+p.deleteMesh(regions=pickedRegions)
+p = mdb.models['Model-1'].parts['Part-1']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#100 ]', ), )
+p.seedEdgeByNumber(edges=pickedEdges, number=100, constraint=FINER)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+a = mdb.models['Model-1'].rootAssembly
+a.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Cantilever'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "Cantilever.inp".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+mdb.jobs['Cantilever'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "Cantilever.inp".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    optimizationTasks=ON, geometricRestrictions=ON, stopConditions=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON, 
+    optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+p = mdb.models['Model-1'].parts['Part-1']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#2 ]', ), )
+p.deleteMesh(regions=pickedRegions)
+p = mdb.models['Model-1'].parts['Part-1']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#100 ]', ), )
+p.seedEdgeByNumber(edges=pickedEdges, number=500, constraint=FINER)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+a = mdb.models['Model-1'].rootAssembly
+a.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Cantilever'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "Cantilever.inp".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+p = mdb.models['Model-1'].parts['Part-1']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#2 ]', ), )
+p.deleteMesh(regions=pickedRegions)
+p = mdb.models['Model-1'].parts['Part-1']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#100 ]', ), )
+p.deleteSeeds(regions=pickedEdges)
+p = mdb.models['Model-1'].parts['Part-1']
+p.deleteMesh()
+p = mdb.models['Model-1'].parts['Part-1']
+p.seedPart(size=0.4, deviationFactor=0.1, minSizeFactor=0.1)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+p = mdb.models['Model-1'].parts['Part-1']
+p.deleteMesh()
+p = mdb.models['Model-1'].parts['Part-1']
+p.seedPart(size=0.2, deviationFactor=0.1, minSizeFactor=0.1)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+session.viewports['Viewport: 1'].view.setValues(nearPlane=168.701, 
+    farPlane=271.338, width=58.7006, height=34.2915, cameraPosition=(251.916, 
+    65.2877, 59.3334), cameraUpVector=(-0.543659, 0.787339, -0.290746), 
+    cameraTarget=(54.2289, -1.65778, -1.57114))
+a = mdb.models['Model-1'].rootAssembly
+a.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Cantilever'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "Cantilever.inp".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+p = mdb.models['Model-1'].parts['Part-1']
+p.deleteMesh()
+p = mdb.models['Model-1'].parts['Part-1']
+p.seedPart(size=0.5, deviationFactor=0.1, minSizeFactor=0.1)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=171.093, 
+    farPlane=268.947, width=35.926, height=20.9871, viewOffsetX=0.57914, 
+    viewOffsetY=-0.542978)
+p = mdb.models['Model-1'].parts['Part-1']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#100 ]', ), )
+p.seedEdgeByNumber(edges=pickedEdges, number=500, constraint=FINER)
+p = mdb.models['Model-1'].parts['Part-1']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#240 ]', ), )
+p.seedEdgeByNumber(edges=pickedEdges, number=2, constraint=FINER)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+a = mdb.models['Model-1'].rootAssembly
+a.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Cantilever'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "Cantilever.inp".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+p = mdb.models['Model-1'].parts['Part-1']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#3 ]', ), )
+p.deleteMesh(regions=pickedRegions)
+p = mdb.models['Model-1'].parts['Part-1']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#240 ]', ), )
+p.deleteSeeds(regions=pickedEdges)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+a = mdb.models['Model-1'].rootAssembly
+a.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Cantilever'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "Cantilever.inp".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+p = mdb.models['Model-1'].parts['Part-1']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#2 ]', ), )
+p.deleteMesh(regions=pickedRegions)
+p = mdb.models['Model-1'].parts['Part-1']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#200 ]', ), )
+p.seedEdgeByNumber(edges=pickedEdges, number=2, constraint=FINER)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+a = mdb.models['Model-1'].rootAssembly
+a.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Cantilever'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "Cantilever.inp".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+p = mdb.models['Model-1'].parts['Part-1']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#3 ]', ), )
+p.deleteMesh(regions=pickedRegions)
+p = mdb.models['Model-1'].parts['Part-1']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#fffff ]', ), )
+p.deleteSeeds(regions=pickedEdges)
+p = mdb.models['Model-1'].parts['Part-1']
+p.seedPart(size=1.0, deviationFactor=0.1, minSizeFactor=0.1)
+p = mdb.models['Model-1'].parts['Part-1']
+p.generateMesh()
+a = mdb.models['Model-1'].rootAssembly
+a.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Cantilever'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "Cantilever.inp".

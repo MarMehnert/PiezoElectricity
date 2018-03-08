@@ -1,0 +1,11 @@
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/clean_output.dir
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/debug.dir
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/distclean.dir
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/info.dir
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/piezo_electricity.dir
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/release.dir
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/run.dir
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/run_mpi_2.dir
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/run_mpi_8.dir
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/runclean.dir
+/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/strip_comments.dir
