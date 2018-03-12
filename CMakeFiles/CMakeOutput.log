@@ -28,30 +28,30 @@ The CXX compiler identification is GNU, found in "/calculate/iwtm80/GitHub/Piezo
 Determining if the C compiler works passed with the following output:
 Change Dir: /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec221069252/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec221069252.dir/build.make CMakeFiles/cmTryCompileExec221069252.dir/build
+Run Build Command:/usr/bin/make "cmTryCompileExec225940677/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec225940677.dir/build.make CMakeFiles/cmTryCompileExec225940677.dir/build
 make[1]: Verzeichnis »/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp« wird betreten
 /usr/bin/cmake -E cmake_progress_report /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec221069252.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec221069252.dir/testCCompiler.c.o   -c /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTryCompileExec221069252
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec221069252.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec221069252.dir/testCCompiler.c.o  -o cmTryCompileExec221069252 -rdynamic 
+Building C object CMakeFiles/cmTryCompileExec225940677.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec225940677.dir/testCCompiler.c.o   -c /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec225940677
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec225940677.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec225940677.dir/testCCompiler.c.o  -o cmTryCompileExec225940677 -rdynamic 
 make[1]: Verzeichnis »/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp« wird verlassen
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec3815864438/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3815864438.dir/build.make CMakeFiles/cmTryCompileExec3815864438.dir/build
+Run Build Command:/usr/bin/make "cmTryCompileExec1213505033/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1213505033.dir/build.make CMakeFiles/cmTryCompileExec1213505033.dir/build
 make[1]: Verzeichnis »/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp« wird betreten
 /usr/bin/cmake -E cmake_progress_report /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec3815864438.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3815864438.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
-Linking C executable cmTryCompileExec3815864438
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3815864438.dir/link.txt --verbose=1
-/usr/bin/cc     -v CMakeFiles/cmTryCompileExec3815864438.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3815864438 -rdynamic  
+Building C object CMakeFiles/cmTryCompileExec1213505033.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1213505033.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec1213505033
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1213505033.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTryCompileExec1213505033.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1213505033 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
@@ -61,8 +61,8 @@ Thread model: posix
 gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.4) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3815864438' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec3815864438 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec3815864438.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1213505033' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1213505033 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1213505033.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
 make[1]: Verzeichnis »/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp« wird verlassen
 
 
@@ -70,15 +70,15 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec3815864438/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec3815864438.dir/build.make CMakeFiles/cmTryCompileExec3815864438.dir/build]
+  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec1213505033/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1213505033.dir/build.make CMakeFiles/cmTryCompileExec1213505033.dir/build]
   ignore line: [make[1]: Verzeichnis »/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp« wird betreten]
   ignore line: [/usr/bin/cmake -E cmake_progress_report /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building C object CMakeFiles/cmTryCompileExec3815864438.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3815864438.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTryCompileExec3815864438]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3815864438.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTryCompileExec3815864438.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3815864438 -rdynamic  ]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec1213505033.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1213505033.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec1213505033]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1213505033.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTryCompileExec1213505033.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1213505033 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper]
@@ -88,8 +88,8 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.4) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3815864438' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec3815864438 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec3815864438.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1213505033' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1213505033 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1213505033.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/collect2] ==> ignore
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
@@ -103,7 +103,7 @@ Parsed C implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec3815864438] ==> ignore
+    arg [cmTryCompileExec1213505033] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o] ==> ignore
@@ -115,7 +115,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..]
-    arg [CMakeFiles/cmTryCompileExec3815864438.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec1213505033.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -147,30 +147,30 @@ Parsed C implicit link information from above output:
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec4168874642/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec4168874642.dir/build.make CMakeFiles/cmTryCompileExec4168874642.dir/build
+Run Build Command:/usr/bin/make "cmTryCompileExec733261162/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec733261162.dir/build.make CMakeFiles/cmTryCompileExec733261162.dir/build
 make[1]: Verzeichnis »/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp« wird betreten
 /usr/bin/cmake -E cmake_progress_report /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec4168874642.dir/testCXXCompiler.cxx.o
-/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++     -o CMakeFiles/cmTryCompileExec4168874642.dir/testCXXCompiler.cxx.o -c /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTryCompileExec4168874642
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4168874642.dir/link.txt --verbose=1
-/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++        CMakeFiles/cmTryCompileExec4168874642.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec4168874642 -rdynamic 
+Building CXX object CMakeFiles/cmTryCompileExec733261162.dir/testCXXCompiler.cxx.o
+/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++     -o CMakeFiles/cmTryCompileExec733261162.dir/testCXXCompiler.cxx.o -c /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec733261162
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec733261162.dir/link.txt --verbose=1
+/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++        CMakeFiles/cmTryCompileExec733261162.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec733261162 -rdynamic 
 make[1]: Verzeichnis »/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp« wird verlassen
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec1979210545/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1979210545.dir/build.make CMakeFiles/cmTryCompileExec1979210545.dir/build
+Run Build Command:/usr/bin/make "cmTryCompileExec157235443/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec157235443.dir/build.make CMakeFiles/cmTryCompileExec157235443.dir/build
 make[1]: Verzeichnis »/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp« wird betreten
 /usr/bin/cmake -E cmake_progress_report /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec1979210545.dir/CMakeCXXCompilerABI.cpp.o
-/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++     -o CMakeFiles/cmTryCompileExec1979210545.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTryCompileExec1979210545
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1979210545.dir/link.txt --verbose=1
-/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++      -v CMakeFiles/cmTryCompileExec1979210545.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1979210545 -rdynamic  
+Building CXX object CMakeFiles/cmTryCompileExec157235443.dir/CMakeCXXCompilerABI.cpp.o
+/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++     -o CMakeFiles/cmTryCompileExec157235443.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec157235443
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec157235443.dir/link.txt --verbose=1
+/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++      -v CMakeFiles/cmTryCompileExec157235443.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec157235443 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/g++-4.8
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
@@ -180,8 +180,8 @@ Thread model: posix
 gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.4) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1979210545' '-rdynamic' '-I' '/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/include' '-pthread' '-L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib' '-L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1979210545 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib -L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1979210545.dir/CMakeCXXCompilerABI.cpp.o -rpath /calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib -rpath /calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib -lmpi_cxx -lmpi -lstdc++ -lm -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec157235443' '-rdynamic' '-I' '/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/include' '-pthread' '-L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib' '-L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec157235443 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib -L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec157235443.dir/CMakeCXXCompilerABI.cpp.o -rpath /calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib -rpath /calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib -lmpi_cxx -lmpi -lstdc++ -lm -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
 make[1]: Verzeichnis »/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp« wird verlassen
 
 
@@ -189,15 +189,15 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec1979210545/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1979210545.dir/build.make CMakeFiles/cmTryCompileExec1979210545.dir/build]
+  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec157235443/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec157235443.dir/build.make CMakeFiles/cmTryCompileExec157235443.dir/build]
   ignore line: [make[1]: Verzeichnis »/calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp« wird betreten]
   ignore line: [/usr/bin/cmake -E cmake_progress_report /calculate/iwtm80/GitHub/PiezoElectricity/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec1979210545.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++     -o CMakeFiles/cmTryCompileExec1979210545.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTryCompileExec1979210545]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1979210545.dir/link.txt --verbose=1]
-  ignore line: [/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++      -v CMakeFiles/cmTryCompileExec1979210545.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1979210545 -rdynamic  ]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec157235443.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++     -o CMakeFiles/cmTryCompileExec157235443.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec157235443]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec157235443.dir/link.txt --verbose=1]
+  ignore line: [/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/bin/mpic++      -v CMakeFiles/cmTryCompileExec157235443.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec157235443 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/g++-4.8]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper]
@@ -207,8 +207,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.4) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1979210545' '-rdynamic' '-I' '/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/include' '-pthread' '-L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib' '-L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1979210545 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib -L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1979210545.dir/CMakeCXXCompilerABI.cpp.o -rpath /calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib -rpath /calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib -lmpi_cxx -lmpi -lstdc++ -lm -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec157235443' '-rdynamic' '-I' '/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/include' '-pthread' '-L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib' '-L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec157235443 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib -L/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec157235443.dir/CMakeCXXCompilerABI.cpp.o -rpath /calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib -rpath /calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/openmpi-3.0.0-z2yuydd2dhsulsjsy4jdzw7e26obkpor/lib -lmpi_cxx -lmpi -lstdc++ -lm -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/collect2] ==> ignore
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
@@ -222,7 +222,7 @@ Parsed CXX implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec1979210545] ==> ignore
+    arg [cmTryCompileExec157235443] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o] ==> ignore
@@ -236,7 +236,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..]
-    arg [CMakeFiles/cmTryCompileExec1979210545.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec157235443.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-rpath] ==> ignore
     arg [/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/hwloc-1.11.8-ixwrk7uor7lqoyvkjr7bpacrx74rk77h/lib] ==> ignore
     arg [-rpath] ==> ignore

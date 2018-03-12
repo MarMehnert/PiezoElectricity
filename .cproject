@@ -24,7 +24,7 @@
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.2005622845" languageId="org.eclipse.cdt.core.assembly" languageName="Assembly" sourceContentType="org.eclipse.cdt.core.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.2011675508" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder">
-								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1682846821" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1682846821" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/calculate/iwtm80/spack/opt/spack/linux-ubuntu14.04-x86_64/gcc-4.8/dealii-develop-mktasyhf5stfg4xrcegflwfxdojfgyuq/include"/>
 								</option>
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1357731556" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
