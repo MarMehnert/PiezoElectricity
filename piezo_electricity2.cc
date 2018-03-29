@@ -89,7 +89,6 @@ namespace Coupled_TEE
 {
 using namespace dealii;
 
-
 template <int dim>
 class BoundaryValues_XYZ : public Function<dim>
 {
@@ -133,52 +132,6 @@ BoundaryValues_XYZ<dim>::vector_value (const Point<dim> &p,
 		{
 	for (unsigned int c=0; c<this->n_components; ++c)
 		values(c) = BoundaryValues_XYZ<dim>::value (p, c);
-		}
-
-
-template <int dim>
-class BoundaryValues_potential : public Function<dim>
-{
-public:
-	BoundaryValues_potential (const Tensor<1,dim> grad_V, const unsigned int n_components)
-: Function<dim>(n_components),
-  grad_V (grad_V)
-  { }
-
-	virtual double value (const Point<dim>   &p,
-			const unsigned int  component = 0) const;
-	virtual void vector_value (const Point<dim> &p,
-			Vector<double>   &values) const;
-
-private:
-
-	const Tensor<1,dim> grad_V;
-};
-template <int dim>
-double
-BoundaryValues_potential<dim>::value (const Point<dim>  &p,
-		const unsigned int component) const
-		{
-	Assert (component < this->n_components,
-			ExcIndexRange (component, 0, this->n_components));
-
-	double help = grad_V*p;
-
-	//	if (component < dim)
-	//	{
-	return help;
-	//	}
-	//	else
-	//		return 100.0;
-		}
-
-template <int dim>
-void
-BoundaryValues_potential<dim>::vector_value (const Point<dim> &p,
-		Vector<double>   &values) const
-		{
-	for (unsigned int c=0; c<this->n_components; ++c)
-		values(c) = BoundaryValues_potential<dim>::value (p, c);
 		}
 
 template <int dim>
@@ -251,7 +204,7 @@ struct Parameters
 
 	// Time
 	static constexpr double dt = 0.1;
-	static constexpr unsigned int n_timesteps = 9;
+	static constexpr unsigned int n_timesteps = 1;
 
 	//J-Ps additions
 
@@ -303,8 +256,8 @@ struct Coefficients
 		static constexpr double epsilon_z = -1.040639889353618e-10; //electrical permittivity in z-Direction
 
 		// Coupling parameters
-		static constexpr double e_13 =4.91e-5;  //piezoelectric coupling coefficient
-		static constexpr double e_33 =-3.15e-5;  //piezoelectric coupling coefficient
+		static constexpr double e_13 =0;//4.91e-5;  //piezoelectric coupling coefficient
+		static constexpr double e_33 =0;//-3.15e-5;  //piezoelectric coupling coefficient
 		static constexpr double e_61 = 0; //piezoelectric coupling coefficient
 		/*
 		 * 		static constexpr double e_13 = 4.91-5;  //piezoelectric coupling coefficient
@@ -322,6 +275,13 @@ struct Coefficients
 		static constexpr double nu = 0.29; // Poisson ratio
 		static constexpr double mu = E_mod/(2*(1+nu)); // Small strain shear modulus
 
+		static constexpr double c_11 = E_mod/(1-nu*nu);// MPa=N/mm^2
+		static constexpr double c_33 = c_11; // N/V^2
+		static constexpr double c_44 = mu;// MPa=N/mm^2
+		static constexpr double c_55 = mu; // N/V^2
+		static constexpr double c_12 = c_11*nu;// MPa=N/mm^2
+		static constexpr double c_13 = c_11*nu; // N/V^2
+
 		static constexpr double lambda = 2.0*mu*nu/(1.0-2.0*nu); // Lame constant
 		static constexpr double kappa = 2.0*mu*(1.0+nu)/(3.0*(1.0-2.0*nu)); // mu = 3*10^5 Pa
 
@@ -332,8 +292,8 @@ struct Coefficients
 		static constexpr double epsilon_z = -1.040639889353618e-10; //electrical permittivity in z-Direction
 
 		// Coupling parameters
-		static constexpr double e_13 =-4.91e-5;  //piezoelectric coupling coefficient
-		static constexpr double e_33 =-3.15e-5;  //piezoelectric coupling coefficient
+		static constexpr double e_13 =0;//-4.91e-5;  //piezoelectric coupling coefficient
+		static constexpr double e_33 =0;//-3.15e-5;  //piezoelectric coupling coefficient
 		static constexpr double e_61 = 0; //piezoelectric coupling coefficient
 	};
 };
@@ -345,7 +305,9 @@ class CoupledProblem
 public:
 	CoupledProblem ();
 	~CoupledProblem ();
-	void run();
+	//void
+	void run(const Tensor<2,dim> F_makro);
+	//void run();
 
 	void set_F_macro(const Tensor<2,dim> F_mac)
 	{
@@ -364,15 +326,15 @@ private:
 	void
 	setup_system ();
 	void
-	make_constraints (const Tensor<2,dim> F_macro,const Tensor<1,dim> grad_V_macro,const unsigned int newton_iteration, const unsigned int timestep, const unsigned int pertubation_case);
+	make_constraints (const unsigned int newton_iteration, const unsigned int timestep);
 	void
 	assemble_system_mech (const unsigned int ts);
 	void
 	solve_mech (LA::MPI::BlockVector & solution_update);
 	void
-	solve_timestep (const Tensor<2,dim> F_makro, const Tensor<1,dim> grad_V_makro, const double time, const int ts, const unsigned int pertubation_case);
+	solve_timestep (const double time, const int ts);
 	void
-	compute_average_stress_defo_gradient(Tensor<4,dim> &C, Tensor<2,dim> &average_defo_grad, Tensor<1,dim> &average_grad_V, Tensor<1,dim> &average_D, Tensor<2,dim> &average_piola_kirchhoff_stress,SymmetricTensor<2,dim> &average_kirchhoff_stress, SymmetricTensor<2,dim> &average_cauchy_stress);
+	compute_average_stress_defo_gradient(Tensor<4,dim> &C, Tensor<2,dim> &average_defo_grad, Tensor<2,dim> &average_piola_kirchhoff_stress, SymmetricTensor<2,dim> &average_kirchhoff_stress);
 	void
 	compute_tangent();
 	void
@@ -434,31 +396,18 @@ private:
 
 	std::vector<Point_History_coupled<dim> >  quadrature_point_history;
 	Tensor<2,dim>                                average_defo_grad;
-	Tensor<1,dim>                                average_grad_V;
-	Tensor<1,dim>                                average_D;
 	Tensor<2,dim>                      average_piola_kirchhoff_stress;
 	SymmetricTensor<2,dim>                  average_kirchhoff_stress;
-	SymmetricTensor<2,dim>                  average_cauchy_stress;
-	std::vector<SymmetricTensor<2,dim> > average_cauchy_stress_pertubations;
-	std::vector<Tensor<2,dim> > average_defo_grad_pertubations;
-	Tensor<2,Parameters::n_timesteps*Parameters::n_timesteps> epsilon_perturbed;
-	FullMatrix<double> epsilon_perturbed_kelvin;
-	std::vector<double>cauchy_stress_pertubations;
-	std::vector<double>strain_pertubations;
-	Vector<double> C_mech;
 
 	Tensor<4,dim>     tangent;
 	Tensor<2,dim>     F_macro;
-	Tensor<1,dim>     grad_V_macro;
 	Tensor<4,dim>     tangent_operator;
-
 
 };
 
 template<int dim>
 CoupledProblem<dim>::CoupledProblem ()
 :
-
 n_blocks (1),
 first_u_component (0), // Displacement
 V_component (first_u_component + dim), // Voltage / Potential difference
@@ -492,8 +441,7 @@ computing_timer(mpi_communicator,
 										FE_Q<dim> (poly_order), 1), // Voltage
 
 										qf_cell(poly_order+1),
-										qf_face(poly_order+1)//,
-										//epsilon_perturbed(36,36)
+										qf_face(poly_order+1)
 										{
 										}
 
@@ -700,12 +648,11 @@ CoupledProblem<dim>::setup_system ()
 			mpi_communicator);
 
 
-
 }
 
 template<int dim>
 void
-CoupledProblem<dim>::make_constraints (const Tensor<2,dim> F_macro,const Tensor<1,dim> grad_V_macro,const unsigned int newton_iteration, const unsigned int timestep, const unsigned int pertubation_case)
+CoupledProblem<dim>::make_constraints (const unsigned int newton_iteration, const unsigned int timestep)
 {
 	TimerOutput::Scope timer_scope (computing_timer, "Make constraints");
 
@@ -720,147 +667,82 @@ CoupledProblem<dim>::make_constraints (const Tensor<2,dim> F_macro,const Tensor<
 			const double potential_difference_per_ts = Parameters::potential_difference/(static_cast<double>(Parameters::n_timesteps));
 
 
-			Tensor<2,dim> F=F_macro;
-			Tensor<1,dim> grad_V=grad_V_macro;
+			Tensor<2,dim> F=unit_symmetric_tensor<dim>();
+			double lambda=1.001;
+			F[2][2]=lambda;
+			F[1][1]=lambda;
+			F[0][0]=lambda;
+			//			F[1][1]=1.0/std::sqrt(lambda);
+			//			F[2][2]=1.0/std::sqrt(lambda);
 
 
-			if (pertubation_case==1)
-			{
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_right,
-						BoundaryValues_XYZ<dim>(F,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
+			// Radial displacement on internal surface
+			VectorTools::interpolate_boundary_values(dof_handler,
+					Parameters::boundary_id_right,
+					BoundaryValues_XYZ<dim>(F,n_components),
+					dirichlet_constraints,
+					fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
 
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_left,
-						BoundaryValues_XYZ<dim>(F,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
+			// Radial displacement on internal surface
+			VectorTools::interpolate_boundary_values(dof_handler,
+					Parameters::boundary_id_left,
+					BoundaryValues_XYZ<dim>(F,n_components),
+					dirichlet_constraints,
+					fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
 
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_top,
-						BoundaryValues_XYZ<dim>(F,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
+			// Radial displacement on internal surface
+			VectorTools::interpolate_boundary_values(dof_handler,
+					Parameters::boundary_id_top,
+					BoundaryValues_XYZ<dim>(F,n_components),
+					dirichlet_constraints,
+					fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
 
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_bottom,
-						BoundaryValues_XYZ<dim>(F,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
+			// Radial displacement on internal surface
+			VectorTools::interpolate_boundary_values(dof_handler,
+					Parameters::boundary_id_bottom,
+					BoundaryValues_XYZ<dim>(F,n_components),
+					dirichlet_constraints,
+					fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
 
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_front,
-						BoundaryValues_XYZ<dim>(F,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
+			// Radial displacement on internal surface
+			VectorTools::interpolate_boundary_values(dof_handler,
+					Parameters::boundary_id_front,
+					BoundaryValues_XYZ<dim>(F,n_components),
+					dirichlet_constraints,
+					fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
 
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_back,
-						BoundaryValues_XYZ<dim>(F,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
+			// Radial displacement on internal surface
+			VectorTools::interpolate_boundary_values(dof_handler,
+					Parameters::boundary_id_back,
+					BoundaryValues_XYZ<dim>(F,n_components),
+					dirichlet_constraints,
+					fe_cell.component_mask(x_displacement) | fe_cell.component_mask(y_displacement) | fe_cell.component_mask(z_displacement));
 
-				// Prescribed voltage at upper surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_bottom,
-						Functions::ZeroFunction<dim>(n_components),
-						//Functions::ConstantFunction<dim>(-potential_difference_per_ts/2,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(voltage));
-			}
-			else
-			{
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_left,
-						Functions::ZeroFunction<dim>(n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(x_displacement));
-
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_back,
-						Functions::ZeroFunction<dim>(n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(y_displacement));
-
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_top,
-						Functions::ZeroFunction<dim>(n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(z_displacement));
-
-				//				// Prescribed voltage at upper surface
-				//				VectorTools::interpolate_boundary_values(dof_handler,
-				//						Parameters::boundary_id_top,
-				//						//Functions::ZeroFunction<dim>(n_components),
-				//						Functions::ConstantFunction<dim>(100,n_components),
-				//						dirichlet_constraints,
-				//						fe_cell.component_mask(voltage));
-				//
-				//				// Prescribed voltage at upper surface
-				//				VectorTools::interpolate_boundary_values(dof_handler,
-				//						Parameters::boundary_id_bottom,
-				//						Functions::ZeroFunction<dim>(n_components),
-				//						//Functions::ConstantFunction<dim>(-potential_difference_per_ts/2,n_components),
-				//						dirichlet_constraints,
-				//						fe_cell.component_mask(voltage));
+			//			// Prescribed voltage at lower surface
+			//			VectorTools::interpolate_boundary_values(dof_handler,
+			//					Parameters::boundary_id_top,
+			//					//ZeroFunction<dim>(n_components),
+			//					Functions::ConstantFunction<dim>(+potential_difference_per_ts,n_components),
+			//					dirichlet_constraints,
+			//					fe_cell.component_mask(voltage));
+			//
+			// Prescribed voltage at upper surface
+			VectorTools::interpolate_boundary_values(dof_handler,
+					Parameters::boundary_id_bottom,
+					Functions::ZeroFunction<dim>(n_components),
+					//Functions::ConstantFunction<dim>(-potential_difference_per_ts/2,n_components),
+					dirichlet_constraints,
+					fe_cell.component_mask(voltage));
 
 
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_right,
-						BoundaryValues_potential<dim>(grad_V,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(voltage));
+			//			// Radial displacement on internal surface
+			//			VectorTools::interpolate_boundary_values(dof_handler,
+			//					Parameters::boundary_id_right,
+			//					//ZeroFunction<dim>(n_components),
+			//					Functions::ConstantFunction<dim>(displacement_per_ts,n_components),
+			//					dirichlet_constraints,
+			//					fe_cell.component_mask(z_displacement));
 
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_left,
-						BoundaryValues_potential<dim>(grad_V,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(voltage));
-
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_top,
-						BoundaryValues_potential<dim>(grad_V,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(voltage));
-
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_bottom,
-						BoundaryValues_potential<dim>(grad_V,n_components),
-						//Functions::ConstantFunction<dim>(100,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(voltage));
-
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_front,
-						BoundaryValues_potential<dim>(grad_V,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(voltage));
-
-				// Radial displacement on internal surface
-				VectorTools::interpolate_boundary_values(dof_handler,
-						Parameters::boundary_id_back,
-						BoundaryValues_potential<dim>(grad_V,n_components),
-						dirichlet_constraints,
-						fe_cell.component_mask(voltage));
-
-
-			}
 
 		}
 
@@ -1081,8 +963,8 @@ CoupledProblem<dim>::assemble_system_mech (const unsigned int ts)
 					{
 						Vector<double> help= Physics::Notation::Kelvin::to_vector(symm_Grad_Nx_j_u);
 						C_kelvin.vmult(help,Grad_Nx_j_u_kelvin);
-						//cell_matrix(i, j) += contract3(Grad_Nx_i_u, C, Grad_Nx_j_u) * JxW;
-						cell_matrix(i, j) += (Grad_Nx_i_u_kelvin*help) * JxW;
+						cell_matrix(i, j) += contract3(Grad_Nx_i_u, C, Grad_Nx_j_u) * JxW;
+						//cell_matrix(i, j) += (Grad_Nx_i_u_kelvin*help) * JxW;
 					}
 					else if ((i_group == u_dof) && (j_group == V_dof))
 					{
@@ -1465,15 +1347,13 @@ void CoupledProblem<dim>::update_qph ()
 }
 
 template <int dim>
-void CoupledProblem<dim>:: compute_average_stress_defo_gradient(Tensor<4,dim> &C, Tensor<2,dim> &average_defo_grad, Tensor<1,dim> &average_grad_V, Tensor<1,dim> &average_D, Tensor<2,dim> &average_piola_kirchhoff_stress, SymmetricTensor<2,dim> &average_kirchhoff_stress, SymmetricTensor<2,dim> &average_cauchy_stress)
+void CoupledProblem<dim>:: compute_average_stress_defo_gradient(Tensor<4,dim> &C, Tensor<2,dim> &average_defo_grad, Tensor<2,dim> &average_piola_kirchhoff_stress, SymmetricTensor<2,dim> &average_kirchhoff_stress)
 {
 	average_defo_grad=0;
 	average_piola_kirchhoff_stress=0;
 	average_kirchhoff_stress=0;
-	average_grad_V=0;
-	average_D=0;
 	Tensor<2,dim> average_piola_kirchhoff_stress_tmp;
-	average_cauchy_stress=0;
+	Tensor<2,dim> average_cauchy_stress;
 	Tensor<2,dim> average_strain;
 
 	SymmetricTensor<4,dim>C2;
@@ -1534,13 +1414,11 @@ void CoupledProblem<dim>:: compute_average_stress_defo_gradient(Tensor<4,dim> &C
 			{
 
 				average_defo_grad += ( lqph[q_point].get_F() * fe_values.JxW(q_point));
-				average_grad_V += ( lqph[q_point].get_E() * fe_values.JxW(q_point));
-				average_D += ( lqph[q_point].get_D() * fe_values.JxW(q_point));
 				Tensor<2,dim> F_inv = lqph[q_point].get_F_inv();
 				Tensor<2,dim> tau = static_cast<Tensor<2,dim> > ( lqph[q_point].get_tau_tot() );
 				average_piola_kirchhoff_stress +=( ( tau * transpose(F_inv) ) * fe_values.JxW(q_point));
 				average_kirchhoff_stress += symmetrize(tau * fe_values.JxW(q_point));
-				average_cauchy_stress += symmetrize((tau * (1.0/lqph[q_point].get_det_F()) * fe_values.JxW(q_point)));
+				average_cauchy_stress += (tau * (1.0/lqph[q_point].get_det_F()) * fe_values.JxW(q_point));
 				average_strain+=(0.5*(transpose(lqph[q_point].get_grad_u())+lqph[q_point].get_grad_u()) * fe_values.JxW(q_point));
 
 			}
@@ -1551,7 +1429,25 @@ void CoupledProblem<dim>:: compute_average_stress_defo_gradient(Tensor<4,dim> &C
 
 	}
 
+	Tensor<2,dim> average_volumetric_cauchy_stress = (1.0/3.0)*trace(average_cauchy_stress)*unit_symmetric_tensor<dim>();
+	Tensor<2,dim> average_deviatoric_cauchy_stress = average_cauchy_stress- average_volumetric_cauchy_stress;
+	Tensor<2,dim> average_volumetric_strain =(1.0/3.0)*trace(average_strain)*unit_symmetric_tensor<dim>();
+	Tensor<2,dim> average_deviatoric_strain = average_strain- average_volumetric_strain;
 
+	double norm_average_deviatoric_cauchy_stress=std::sqrt(scalar_product(average_deviatoric_cauchy_stress,average_deviatoric_cauchy_stress));
+	double norm_average_volumetric_cauchy_stress=std::sqrt(scalar_product(average_volumetric_cauchy_stress,average_volumetric_cauchy_stress));
+
+	double norm_average_deviatoric_strain=std::sqrt(scalar_product(average_deviatoric_strain,average_deviatoric_strain));
+	double norm_average_volumetric_strain=std::sqrt(scalar_product(average_volumetric_strain,average_volumetric_strain));
+
+	double mu_M= (1.0/2.0)*(norm_average_deviatoric_cauchy_stress/norm_average_deviatoric_strain);
+	double K_M= (1.0/3.0)*(norm_average_volumetric_cauchy_stress/norm_average_volumetric_strain);
+
+	//tangent=outer_product(average_cauchy_stress,inv_average_green_lagrange);
+	const FullMatrix<double> C_kelvin = Physics::Notation::Kelvin::to_matrix(tangent);
+
+	pcout << "Schubmodul mu: "<<mu_M << std::endl;
+	pcout << "E-modul: "<<9.0*K_M*mu_M/(3.0*K_M+mu_M) << std::endl;
 
 	deallog << "\nAverage deformation gradient:\n";
 	for (unsigned int i=0; i<dim; ++i)
@@ -1576,20 +1472,155 @@ void CoupledProblem<dim>:: compute_average_stress_defo_gradient(Tensor<4,dim> &C
 
 }
 
-template <int dim>
-void CoupledProblem<dim>::compute_tangent ()
-{
-
-
-}
+//template <int dim>
+//void CoupledProblem<dim>::compute_tangent ()
+//{
+//	//this->tangent_computation=true;
+//	//copy converged tangent matrix
+//	SparseMatrix<double> current_tangent_matrix;
+//	SparseMatrix<double> current_penalty_matrix;
+//	Vector<double> current_system_rhs;
+//	const Tensor<2,dim> Piola_kirchhoff_converged (average_piola_kirchhoff_stress);
+//	const Tensor<2,dim> Defo_grad_converged(F_macro);
+//	tangent_operator = 0.0;
+//	//defo_gradient at converged state -> to be perturbated
+//	double beta = 1e-6; //pertubation value for all d2 - load cases
+//
+//
+//
+//	switch (dim)
+//	{
+//	case 2:
+//	{
+//		//vector containing the pertubations to be computed
+//		std::vector<Tensor<2,dim> > defo_grad_pertubations;
+//		std::vector<Tensor<2,dim> > piola_kirchhoff_perturbations(4);
+//		SymmetricTensor<2,dim> kirchhoff_stress_dummy;
+//		//fill the 4 pertubed deformation gradients
+//
+//		for(unsigned int i = 0; i<4; i++)
+//		{
+//			defo_grad_pertubations.push_back(unit_symmetric_tensor<dim>());
+//		}
+//		{
+//			//
+//			defo_grad_pertubations[0][0][0] += beta;
+//			defo_grad_pertubations[1][0][1] += beta;
+//			defo_grad_pertubations[2][1][0] += beta;
+//			defo_grad_pertubations[3][1][1] += beta;
+//		}
+//		//end fill perturbed defo grads
+//
+//		for(unsigned int i=0; i<defo_grad_pertubations.size();i++)
+//		{
+//			//use latest converged state
+//			//set defo grad to pertubed state
+//			Vector<double> displacement_update(dof_handler.n_dofs());
+//
+//			{
+//				set_F_macro(defo_grad_pertubations[i]);
+//			}
+//
+//			update_qph(); //reset qph to converged state
+//			////
+//
+//			if(this->DEIM == false)
+//			{
+//				current_tangent_matrix.reinit(sparsity_pattern);
+//				current_penalty_matrix.reinit(sparsity_pattern);
+//
+//				current_tangent_matrix.copy_from( tangent_matrix );
+//				current_penalty_matrix.copy_from(penalty_matrix);
+//				current_system_rhs=system_rhs;
+//				current_system_rhs*=-1.0;
+//
+//				{
+//					make_constraints(0, 1.0, 1.0, 1);
+//					constraints.condense(current_tangent_matrix, current_system_rhs);
+//				}
+//
+//			}
+//			//SOLVE LINEAR SYSTEM
+//			std::pair<unsigned int, double>lin_solver_output;
+//			{
+//				current_tangent_matrix.add(1,current_penalty_matrix);
+//				lin_solver_output = solve_linear_system(displacement_update, current_tangent_matrix, current_system_rhs);
+//			}
+//
+//			update_qph();
+//
+//			compute_average_stress_defo_gradient(displacement_update,defo_grad_pertubations[i],piola_kirchhoff_perturbations[i],kirchhoff_stress_dummy);
+//
+//		}//end computations of pertubations
+//
+//		//COMPUTE TANGENT MODULUS
+//		for(unsigned int i = 0; i< defo_grad_pertubations.size();i++)
+//		{
+//			//compute deltas
+//			piola_kirchhoff_perturbations[i] -= Piola_kirchhoff_converged;
+//		}
+//		tangent_operator[0][0][0][0]=piola_kirchhoff_perturbations[0][0][0]/beta;
+//		tangent_operator[0][1][0][0]=piola_kirchhoff_perturbations[0][0][1]/beta;
+//		tangent_operator[1][0][0][0]=piola_kirchhoff_perturbations[0][1][0]/beta;
+//		tangent_operator[1][1][0][0]=piola_kirchhoff_perturbations[0][1][1]/beta;
+//		//
+//		tangent_operator[0][0][0][1]=piola_kirchhoff_perturbations[1][0][0]/beta;
+//		tangent_operator[0][1][0][1]=piola_kirchhoff_perturbations[1][0][1]/beta;
+//		tangent_operator[1][0][0][1]=piola_kirchhoff_perturbations[1][1][0]/beta;
+//		tangent_operator[1][1][0][1]=piola_kirchhoff_perturbations[1][1][1]/beta;
+//		//
+//		tangent_operator[0][0][1][0]=piola_kirchhoff_perturbations[2][0][0]/beta;
+//		tangent_operator[0][1][1][0]=piola_kirchhoff_perturbations[2][1][0]/beta;
+//		tangent_operator[1][0][1][0]=piola_kirchhoff_perturbations[2][0][1]/beta;
+//		tangent_operator[1][1][1][0]=piola_kirchhoff_perturbations[2][1][1]/beta;
+//		//
+//		tangent_operator[0][0][1][1]=piola_kirchhoff_perturbations[3][0][0]/beta;
+//		tangent_operator[0][1][1][1]=piola_kirchhoff_perturbations[3][0][1]/beta;
+//		tangent_operator[1][0][1][1]=piola_kirchhoff_perturbations[3][1][0]/beta;
+//		tangent_operator[1][1][1][1]=piola_kirchhoff_perturbations[3][1][1]/beta;
+//		//END COMPUTE TANGENT MODULUS
+//
+//		////
+//		if(true)
+//		{
+//			//Print tangent values
+//			deallog<<"A_1111 = "<<tangent_operator[0][0][0][0]<<"\n";
+//			deallog<<"A_1211 = "<<tangent_operator[0][1][0][0]<<"\n";
+//			deallog<<"A_2111 = "<<tangent_operator[1][0][0][0]<<"\n";
+//			deallog<<"A_2211 = "<<tangent_operator[1][1][0][0]<<"\n";
+//			deallog<<"A_1112 = "<<tangent_operator[0][0][0][1]<<"\n";
+//			deallog<<"A_1212 = "<<tangent_operator[0][1][0][1]<<"\n";
+//			deallog<<"A_2112 = "<<tangent_operator[1][0][0][1]<<"\n";
+//			deallog<<"A_2212 = "<<tangent_operator[1][1][0][1]<<"\n";
+//			deallog<<"A_1121 = "<<tangent_operator[0][0][1][0]<<"\n";
+//			deallog<<"A_1221 = "<<tangent_operator[0][1][1][0]<<"\n";
+//			deallog<<"A_2121 = "<<tangent_operator[1][0][1][0]<<"\n";
+//			deallog<<"A_2221 = "<<tangent_operator[1][1][1][0]<<"\n";
+//			deallog<<"A_1122 = "<<tangent_operator[0][0][1][1]<<"\n";
+//			deallog<<"A_1222 = "<<tangent_operator[0][1][1][1]<<"\n";
+//			deallog<<"A_2122 = "<<tangent_operator[1][0][1][1]<<"\n";
+//			deallog<<"A_2222 = "<<tangent_operator[1][1][1][1]<<"\n";
+//			deallog<<std::endl ;
+//		}
+//		////
+//	}
+//	break;
+//
+//	case 3:
+//	{
+//		throw std::runtime_error("compute_tangent--> dim==3 -> not yet implemented");
+//	}
+//	break;
+//
+//	}
+//
+//}
 
 
 template<int dim>
 void
-CoupledProblem<dim>::solve_timestep (const Tensor<2,dim> F_makro, const Tensor<1,dim> grad_V_makro, const double time, const int ts, const unsigned int pertubation_case)
+CoupledProblem<dim>::solve_timestep (const double time, const int ts)
 {
-	this->F_macro=F_makro;
-	this->grad_V_macro=grad_V_makro;
 	locally_relevant_solution_t1 = locally_relevant_solution;
 
 	for (unsigned int n=0; n < Parameters::max_newton_iterations; ++n)
@@ -1600,7 +1631,7 @@ CoupledProblem<dim>::solve_timestep (const Tensor<2,dim> F_makro, const Tensor<1
 		locally_relevant_solution_update.reinit (locally_relevant_partitioning,
 				mpi_communicator);
 
-		make_constraints(F_makro, grad_V_makro,n, ts, pertubation_case);
+		make_constraints(n, ts);
 
 		// === ELECTRO-MECHANICAL PROBLEM ===
 
@@ -1610,10 +1641,10 @@ CoupledProblem<dim>::solve_timestep (const Tensor<2,dim> F_makro, const Tensor<1
 
 		assemble_system_mech(ts);
 		solve_mech(locally_relevant_solution_update);
-		locally_relevant_solution.block(uV_block) = locally_relevant_solution_update.block(uV_block);
+		locally_relevant_solution.block(uV_block) += locally_relevant_solution_update.block(uV_block);
 
 		update_qph();
-
+		compute_average_stress_defo_gradient(tangent, average_defo_grad, average_piola_kirchhoff_stress, average_kirchhoff_stress);
 
 	}
 
@@ -1700,8 +1731,9 @@ CoupledProblem<dim>::refine_grid ()
 
 template<int dim>
 void
-CoupledProblem<dim>::run ()
+CoupledProblem<dim>::run (const Tensor<2,dim> F_makro)
 {
+	this->F_macro = F_makro;
 	make_grid();
 	setup_system();
 	setup_qph();
@@ -1729,196 +1761,12 @@ CoupledProblem<dim>::run ()
 		<< std::endl
 		<< std::string(100,'=')
 		<< std::endl;
-
-		unsigned int pertubation_case=1;
-		Tensor<2,dim>F_makro=unit_symmetric_tensor<dim>();
-		Tensor<1,dim> grad_V_makro;
-
-		//solve_timestep(F_makro,grad_V_makro, time, ts, pertubation_case);
-
-
-
-		double beta=0.01;
-		std::vector<Tensor<2,dim> > defo_grad_pertubations;
-		std::vector<Tensor<2,dim> > piola_kirchhoff_perturbations(6);
-
-		//for(unsigned int i = 0; i<2; i++)
-		{
-			defo_grad_pertubations.push_back(unit_symmetric_tensor<dim>());
-		}
-		{
-			if (ts==1)
-			{
-				pertubation_case=1;
-				F_makro[0][0]+=beta;
-			}
-			else if (ts==2)
-			{
-				pertubation_case=1;
-				F_makro[1][1]+=beta;
-			}
-			else if (ts==3)
-			{
-				pertubation_case=1;
-				F_makro[2][2]+=beta;
-			}
-			else if (ts==4)
-			{
-				pertubation_case=1;
-				F_makro[0][1]+=beta;
-			}
-			else if (ts==5)
-			{
-				pertubation_case=1;
-				F_makro[1][2]+=beta;
-			}
-			else if (ts==6)
-			{
-				pertubation_case=1;
-				F_makro[0][2]+=beta;
-			}
-			else if (ts==7)
-			{
-				pertubation_case=2;
-				grad_V_makro[0]=1;
-			}
-			else if (ts==8)
-			{
-				pertubation_case=2;
-				grad_V_makro[1]=1;
-			}
-			else if (ts==9)
-			{
-				pertubation_case=2;
-				grad_V_makro[2]=1;
-			}
-		}
-		//for (unsigned int i=0;i<2;i++)
-		{
-			solve_timestep(F_makro,grad_V_makro, time, ts, pertubation_case);
-			compute_average_stress_defo_gradient(tangent, average_defo_grad, average_grad_V,average_D, average_piola_kirchhoff_stress, average_kirchhoff_stress, average_cauchy_stress);
-			average_cauchy_stress_pertubations.push_back(average_cauchy_stress);
-			average_defo_grad_pertubations.push_back(average_defo_grad);
-
-		}
-
-		pcout << "grad V "<<ts<<": "<<average_grad_V << std::endl;
-		pcout << "average D "<<ts<<": "<<average_D << std::endl;
-		const SymmetricTensor<2,dim> strain = symmetrize(0.5*(transpose(average_defo_grad_pertubations[ts-1]-unit_symmetric_tensor<dim>())+(average_defo_grad_pertubations[ts-1]-unit_symmetric_tensor<dim>())));
-		const Vector<double> &stress_kelvin = Physics::Notation::Kelvin::to_vector(average_cauchy_stress);
-		const Vector<double> &strain_kelvin = Physics::Notation::Kelvin::to_vector(strain);
-
-		for (unsigned int i=0; i<3; i++)
-		{
-			cauchy_stress_pertubations.push_back(stress_kelvin[i]);
-		}
-		for (unsigned int i=3; i<6; i++)
-		{
-			cauchy_stress_pertubations.push_back(0.5*stress_kelvin[i]);
-		}
-		if (Parameters::n_timesteps>6)
-		{
-			for (unsigned int i=6; i<9; i++)
-			{
-				cauchy_stress_pertubations.push_back(average_D[i-6]);
-			}
-		}
-
-		for (unsigned int i=0; i<Parameters::n_timesteps; ++i)
-			for (unsigned int j=0; j<Parameters::n_timesteps; ++j)
-			{
-				unsigned int line = ((ts-1)*Parameters::n_timesteps)+i;
-				unsigned int row = ((i)*Parameters::n_timesteps)+j;
-				if (j<6)
-				{
-					epsilon_perturbed[line][row]= strain_kelvin[j];
-				}
-				else
-				{
-					epsilon_perturbed[line][row]=average_grad_V[j-6];
-				}
-
-			}
-
-
-
-		//		//pcout << "strain "<<ts<<": "<<epsilon_perturbed << std::endl;
-		//		Vector<double> sigma_perturbed(36);
-		//sigma_perturbed[0]=average_cauchy_stress[0][0];
-
-
-
-
-
-
+		solve_timestep(time, ts);
 		output_results(ts);
 
 		// Update solution at previous timestep
 		locally_relevant_solution_t1 = locally_relevant_solution;
 	}
-
-
-	Vector<double>       system_rhs2(Parameters::n_timesteps*Parameters::n_timesteps);
-	Vector<double>       C_mech2(Parameters::n_timesteps*Parameters::n_timesteps);
-
-	for (unsigned int i=0;i<Parameters::n_timesteps*Parameters::n_timesteps;i++)
-	{
-		system_rhs2[i]=cauchy_stress_pertubations[i];
-	}
-
-
-	FullMatrix<double> epsilon_perturbed_kelvin2(Parameters::n_timesteps*Parameters::n_timesteps,Parameters::n_timesteps*Parameters::n_timesteps);
-	for (unsigned int i=0;i<Parameters::n_timesteps*Parameters::n_timesteps;i++)
-		for (unsigned int j=0;j<Parameters::n_timesteps*Parameters::n_timesteps;j++)
-		{
-			epsilon_perturbed_kelvin2[i][j]=epsilon_perturbed[i][j];
-		}
-
-	std::ofstream outfile;
-	outfile.open("eps.txt", std::ios_base::app);
-	for (unsigned int i=0;i<Parameters::n_timesteps*Parameters::n_timesteps;i++)
-	{
-		outfile << epsilon_perturbed[i]
-									 << std::endl;
-	}
-
-	SolverControl           solver_control (10000, 1e-12);
-	SolverGMRES<>              solver (solver_control);
-	solver.solve (epsilon_perturbed_kelvin2,
-			C_mech2,
-			system_rhs2,
-			PreconditionIdentity());
-
-	Tensor<2,Parameters::n_timesteps> C_mech_Tensor;
-	for (unsigned int i=0;i<Parameters::n_timesteps;i++)
-		for (unsigned int j=0;j<Parameters::n_timesteps;j++)
-		{
-			C_mech_Tensor[i][j]=C_mech2[(i*Parameters::n_timesteps)+j];
-		}
-
-	Tensor<2,Parameters::n_timesteps> system_rhs_Tensor;
-	for (unsigned int i=0;i<Parameters::n_timesteps;i++)
-		for (unsigned int j=0;j<Parameters::n_timesteps;j++)
-		{
-			system_rhs_Tensor[i][j]=system_rhs2[(i*Parameters::n_timesteps)+j];
-		}
-
-	std::ofstream outfile2;
-	outfile2.open("sigma.txt", std::ios_base::app);
-	for (unsigned int i=0;i<Parameters::n_timesteps;i++)
-	{
-		outfile2 << system_rhs_Tensor[i]
-									  << std::endl;
-	}
-
-	std::ofstream outfile3;
-	outfile3.open("C_mech.txt", std::ios_base::app);
-	for (unsigned int i=0;i<Parameters::n_timesteps;i++)
-	{
-		outfile3 << C_mech_Tensor[i]
-								  << std::endl;
-	}
-
 
 }
 }
@@ -1934,7 +1782,7 @@ main (int argc, char *argv[])
 
 		Coupled_TEE::CoupledProblem<3> coupled_thermo_electro_elastic_problem_3d;
 
-		coupled_thermo_electro_elastic_problem_3d.run();
+		coupled_thermo_electro_elastic_problem_3d.run(unit_symmetric_tensor<3>());
 	}
 	catch (std::exception &exc)
 	{

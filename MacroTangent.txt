@@ -1,0 +1,95 @@
+template <int dim>
+void Magnetoelasticity<dim>::compute_macro_tangent (){
+
+	dPP_dFF = 0.0;
+	dPP_dHH = 0.0;
+	dBB_dFF = 0.0;
+	dBB_dHH = 0.0;
+
+	stored_solution_n = solution_n;
+
+	Tensor <4, dim> macro_dP_dF;
+	Tensor <3, dim> macro_dP_dH;
+	Tensor <3, dim> macro_dB_dF;
+	Tensor <2, dim> macro_dB_dH;
+
+	Tensor <2, dim> P_avg_old = P_avg;
+	Tensor <1, dim> B_avg_old = B_avg;
+	Tensor <2, dim> F_avg_old = F_avg;
+	Tensor <1, dim> H_avg_old = H_avg;
+
+	Tensor <2, dim> F_perturbed;
+	Tensor <1, dim> H_perturbed;
+
+	double delta_F;
+	double delta_H;
+
+	Tensor<2, dim> identity = Tensor<2, dim>(StandardTensors<dim>::I);
+
+	H_perturbed = 0;
+	for (unsigned int i = 0; i<dim; ++i){
+		for(unsigned int j = 0; j<dim; ++j){
+
+
+			F_perturbed = identity; //Identity
+
+			if(fabs(F_Macro[i][j]-identity[i][j]) > 0.0001){
+				delta_F = (F_Macro[i][j]-identity[i][j])*0.001;
+				F_perturbed[i][j] += delta_F;
+			}
+
+			else{
+				delta_F = 0.000001;
+				F_perturbed[i][j] += delta_F;
+			}
+
+
+			solution_delta = 0.0;
+			solve_nonlinear_loadstep_Dirichlet_perturbed(F_perturbed, H_perturbed);
+			//			stored_solution_n += solution_delta;
+			volume_average ();
+
+
+			for (int k=0; k<dim; k++)
+				for (int l=0; l<dim; l++)
+					dPP_dFF[k][l][i][j] = dPP_dFF[k][l][i][j] + (P_avg[k][l] - P_avg_old[k][l])/delta_F;
+
+			for (int k=0; k<dim; k++)
+				dBB_dFF[k][i][j] = dBB_dFF[k][i][j] + (B_avg[k] - B_avg_old[k])/delta_F;
+
+			solution_n = stored_solution_n;
+
+		}
+	}
+
+	F_perturbed = Tensor<2, dim>(StandardTensors<dim>::I);
+	for (unsigned int i = 0; i<dim; ++i){
+
+		H_perturbed = 0.0;
+
+		if(fabs(H_Macro[i]) > 0.001){
+			delta_H = H_Macro[i]*0.1;
+			H_perturbed[i] += delta_H;
+		}
+		else{
+			delta_H = 0.0001;
+					H_perturbed[i] += delta_H;
+		}
+
+		solution_delta = 0.0;
+		solve_nonlinear_loadstep_Dirichlet_perturbed(F_perturbed, H_perturbed);
+		volume_average ();
+
+
+		for (int k=0; k<dim; k++)
+			for (int l=0; l<dim; l++)
+				dPP_dHH[k][l][i] = dPP_dHH[k][l][i] + (P_avg[k][l] - P_avg_old[k][l])/delta_H;
+
+		for (int k=0; k<dim; k++)
+			dBB_dHH[k][i] = dBB_dHH[k][i] + (B_avg[k] - B_avg_old[k])/delta_H;
+
+
+		solution_n = stored_solution_n;
+
+	}
+

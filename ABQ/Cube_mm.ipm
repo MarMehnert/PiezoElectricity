@@ -1,0 +1,13 @@
+<?xml version="1.0"?><msgwrapper><Started><phase type="symconst">BATCHPRE_PHASE</phase><jobName type="string">Cube_mm</jobName><clientHost type="string">fautm106</clientHost><handle type="integer">0</handle></Started>
+<Odb_File><file type="string">/calculate/iwtm80/GitHub/PiezoElectricity/ABQ/Cube_mm.odb</file><phase type="symconst">BATCHPRE_PHASE</phase><jobName type="string">Cube_mm</jobName></Odb_File>
+<Completed><message type="string">Analysis phase complete</message><phase type="symconst">BATCHPRE_PHASE</phase><jobName type="string">Cube_mm</jobName></Completed>
+<Started><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cube_mm</jobName><clientHost type="string">fautm106</clientHost><handle type="integer">0</handle></Started>
+<Step><stepId type="integer">1</stepId><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cube_mm</jobName></Step>
+<Odb_Frame><step type="integer">0</step><frame type="integer">0</frame><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cube_mm</jobName></Odb_Frame>
+<Status><step type="integer">1</step><increment type="integer">0</increment><attempts type="integer">0</attempts><severe type="integer">0</severe><equilibrium type="integer">0</equilibrium><iterations type="integer">0</iterations><totalTime type="float">0</totalTime><stepTime type="float">0</stepTime><timeIncrement type="float">1</timeIncrement><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cube_mm</jobName></Status>
+<MEMORY_ESTIMATE><memory type="float">37.1889314651489</memory><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cube_mm</jobName></MEMORY_ESTIMATE>
+<Odb_Frame><step type="integer">0</step><frame type="integer">1</frame><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cube_mm</jobName></Odb_Frame>
+<Status><step type="integer">1</step><increment type="integer">1</increment><attempts type="integer">1</attempts><severe type="integer">0</severe><equilibrium type="integer">1</equilibrium><iterations type="integer">1</iterations><totalTime type="float">1</totalTime><stepTime type="float">1</stepTime><timeIncrement type="float">1</timeIncrement><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cube_mm</jobName></Status>
+<End_Step><stepId type="integer">1</stepId><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cube_mm</jobName></End_Step>
+<Completed><message type="string">Analysis phase complete</message><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">Cube_mm</jobName></Completed>
+<JOB_COMPLETED><jobName type="string">Cube_mm</jobName><time type="string">Wed Mar 21 13:28:52 2018</time></JOB_COMPLETED></msgwrapper>
